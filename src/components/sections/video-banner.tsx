@@ -10,7 +10,7 @@ const VideoBanner = () => {
           muted
           loop
           playsInline
-          className="absolute inset-0 w-full h-full object-cover z-0"
+          className="absolute inset-0 w-full h-full object-contain z-0 bg-transparent"
         >
           Your browser does not support the video tag.
         </video>
