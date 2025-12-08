@@ -7,16 +7,6 @@ const slides = [
   url: 'https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/object/public/document-uploads/Venha-nos-fazer-uma-visita-a-equipe-Goias-Minas-esta-pronta-para-te-atender-1765225330226.mp4',
   title: "",
   link: ""
-},
-{
-  url: 'https://assets.decocache.com/osklenbr/05584bb1-461d-44e8-ac00-08bb8e300020/shop_gifts_av26_geral-(3).mp4',
-  title: 'Shop Gifts',
-  link: 'Explore Now'
-},
-{
-  url: 'https://assets.decocache.com/osklenbr/88e14a28-2a6c-4427-8297-13524d976118/05_Banner_fibras_nobres_desktop_Ate5MB.mp4',
-  title: 'Fibras Nobres - SS26',
-  link: 'Discover Collection'
 }];
 
 
