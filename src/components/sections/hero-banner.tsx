@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect } from 'react';
+import Image from 'next/image';
 
 const slides = [
   {
@@ -81,12 +82,19 @@ const HeroBanner = () => {
               
               <div className="absolute inset-0 z-10 bg-white/10 rounded-2xl lg:rounded-3xl" aria-hidden="true" />
 
-              <div className="absolute inset-0 z-20 flex flex-col items-center justify-center text-center text-black">
-                <div className="flex flex-col items-center gap-2">
-                  <h1>
-                    {slide.title}
-                  </h1>
-                  <a href="#" className="text-sm font-medium tracking-tight underline underline-offset-4">
+              <div className="absolute inset-0 z-20 flex flex-col items-center justify-center text-center">
+                <div className="flex flex-col items-center gap-4">
+                  {/* Logo SVG */}
+                  <div className="relative w-[200px] h-[40px] lg:w-[300px] lg:h-[60px]">
+                    <Image 
+                      src="/logo.svg" 
+                      alt="Logo" 
+                      fill
+                      className="object-contain"
+                      priority
+                    />
+                  </div>
+                  <a href="#" className="text-sm font-medium tracking-tight underline underline-offset-4 text-black">
                     {slide.link}
                   </a>
                 </div>
