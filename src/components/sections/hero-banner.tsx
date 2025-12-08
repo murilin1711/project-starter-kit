@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from 'react';
+import { useState, useRef, useEffect } from 'react';
 
 const slides = [
   {
@@ -22,14 +22,25 @@ const slides = [
 
 const HeroBanner = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
+  const videoRefs = useRef<(HTMLVideoElement | null)[]>([]);
+
+  const handleVideoEnd = () => {
+    setCurrentSlide((prev) => (prev + 1) % slides.length);
+  };
 
   useEffect(() => {
-    const timer = setInterval(() => {
-      setCurrentSlide((prev) => (prev + 1) % slides.length);
-    }, 10000);
-
-    return () => clearInterval(timer);
-  }, []);
+    // Play current video and pause others
+    videoRefs.current.forEach((video, index) => {
+      if (video) {
+        if (index === currentSlide) {
+          video.currentTime = 0;
+          video.play();
+        } else {
+          video.pause();
+        }
+      }
+    });
+  }, [currentSlide]);
 
   return (
     <section className="relative w-full h-screen overflow-hidden">
@@ -68,11 +79,11 @@ const HeroBanner = () => {
               }`}
             >
               <video
+                ref={(el) => { videoRefs.current[index] = el; }}
                 className="h-full w-full object-cover rounded-2xl lg:rounded-3xl"
-                autoPlay
-                loop
                 muted
                 playsInline
+                onEnded={handleVideoEnd}
                 aria-label={`${slide.title} campaign video background`}
               >
                 <source src={slide.url} type="video/mp4" />
