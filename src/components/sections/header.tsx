@@ -1,4 +1,4 @@
-'use client'
+'use client';
 
 import Link from 'next/link';
 import { useState, useEffect } from 'react';
@@ -20,9 +20,9 @@ const Header = () => {
             alt="Goiás Minas Uniformes Logo"
             width={200}
             height={50}
-            className="scale-120 mix-blend-difference"
-            priority
-          />
+            className="scale-120 mix-blend-difference !w-full !h-full !max-w-full"
+            priority />
+
         </div>
       </Link>
 
@@ -35,8 +35,8 @@ const Header = () => {
             width={70}
             height={43}
             className="absolute top-0 left-0 mt-5 mb-5 ml-1 lg:hidden rounded-full"
-            priority
-          />
+            priority />
+
         </div>
       </Link>
 
@@ -107,7 +107,7 @@ const Header = () => {
               <span className="font-suisse font-normal text-[15px] tracking-[-0.02em] text-black">Buscar</span>
               <Search className="w-[16px] h-[16px] text-black" />
             </button>
-          }
+            }
         </div>
       </div>
 
@@ -130,36 +130,36 @@ const Header = () => {
 
     {/* Submenu Overlay */}
     <div
-      id="submenu"
-      data-menu-open={activeSubmenu !== null}
-      onMouseEnter={() => {
-        // Keep submenu open when mouse is over it
-        if (activeSubmenu !== null) {
-          setActiveSubmenu(activeSubmenu);
-        }
-      }}
-      onMouseLeave={() => setActiveSubmenu(null)}
-      className="absolute top-5 left-[5.5px] right-[5.5px] lg:left-[15px] lg:right-[15px] xll:left-[30px] xll:right-[30px] lg:w-[calc(100vw_-_1.9rem)] xll:w-[calc(100vw_-_3.75rem)] 5xl:w-[calc(100vw_-_4rem)] rounded-3xl md:rounded-xl bg-white/[0.7] opacity-0 max-h-0 data-[menu-open=true]:opacity-100 data-[menu-open=true]:lg:max-h-96 data-[menu-open=true]:backdrop-blur-[20px] overflow-hidden transition-[max-height,opacity] duration-300 ease-[cubic-bezier(.16,1,.3,1)] h-auto shadow-lg z-[55]"
-      style={{
-        transition: activeSubmenu !== null ?
-        'all 0.3s cubic-bezier(0.16, 1, 0.3, 1), opacity 0s' :
-        'all 0.3s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.03s 0.27s'
-      }}>
+        id="submenu"
+        data-menu-open={activeSubmenu !== null}
+        onMouseEnter={() => {
+          // Keep submenu open when mouse is over it
+          if (activeSubmenu !== null) {
+            setActiveSubmenu(activeSubmenu);
+          }
+        }}
+        onMouseLeave={() => setActiveSubmenu(null)}
+        className="absolute top-5 left-[5.5px] right-[5.5px] lg:left-[15px] lg:right-[15px] xll:left-[30px] xll:right-[30px] lg:w-[calc(100vw_-_1.9rem)] xll:w-[calc(100vw_-_3.75rem)] 5xl:w-[calc(100vw_-_4rem)] rounded-3xl md:rounded-xl bg-white/[0.7] opacity-0 max-h-0 data-[menu-open=true]:opacity-100 data-[menu-open=true]:lg:max-h-96 data-[menu-open=true]:backdrop-blur-[20px] overflow-hidden transition-[max-height,opacity] duration-300 ease-[cubic-bezier(.16,1,.3,1)] h-auto shadow-lg z-[55]"
+        style={{
+          transition: activeSubmenu !== null ?
+          'all 0.3s cubic-bezier(0.16, 1, 0.3, 1), opacity 0s' :
+          'all 0.3s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.03s 0.27s'
+        }}>
 
       <div className="grid h-full grid-cols-1 grid-rows-1">
         {navItems.map((item) =>
-        <div
-          key={item}
-          data-active={activeSubmenu === item}
-          className="col-start-1 row-start-1 h-full min-h-[384px] pt-24 lg:pt-28 p-8 transition-opacity duration-200 opacity-0 pointer-events-none data-[active=true]:opacity-100 data-[active=true]:pointer-events-auto">
+          <div
+            key={item}
+            data-active={activeSubmenu === item}
+            className="col-start-1 row-start-1 h-full min-h-[384px] pt-24 lg:pt-28 p-8 transition-opacity duration-200 opacity-0 pointer-events-none data-[active=true]:opacity-100 data-[active=true]:pointer-events-auto">
 
             {/* Placeholder for submenu content */}
           </div>
-        )}
+          )}
       </div>
     </div>
-  </header>
-  );
+  </header>);
+
 };
 
 export default Header;
