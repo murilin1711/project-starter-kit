@@ -35,7 +35,7 @@ const Header = () => {
               alt="Goiás Minas Uniformes Logo"
               width={280}
               height={70}
-              className="object-contain !w-full !h-full !max-w-full"
+              className="object-contain !w-full !h-[116px] !max-w-full"
               priority />
           </div>
         </Link>
