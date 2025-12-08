@@ -36,7 +36,7 @@ const Header = () => {
               alt="Goiás Minas Uniformes Logo"
               width={280}
               height={70}
-              className="scale-120 mix-blend-difference !w-full !h-full !max-w-full !m-0 !my-0 !p-0"
+              className="scale-120 mix-blend-difference !m-0 !my-0 !p-0 !w-full !h-[114px] !max-w-full"
               priority />
           </div>
         </Link>
