@@ -13,7 +13,6 @@ const Header = () => {
 
   useEffect(() => {
     const handleScroll = () => {
-      // Detect if user has scrolled past the banner section (assumed ~100vh)
       const bannerHeight = window.innerHeight;
       setIsScrolled(window.scrollY > bannerHeight);
     };
@@ -28,15 +27,15 @@ const Header = () => {
       <div className={`fixed top-0 left-0 right-0 h-[80px] bg-white z-40 transition-opacity duration-300 ${isScrolled ? 'opacity-0' : 'opacity-100'}`} />
       
       <header className="fixed w-full z-50">
-        {/* Desktop Logo - Center, aligned with nav height, larger size */}
+        {/* Desktop Logo - Center, aligned with nav height */}
         <Link href="/" aria-label="Ir para a página inicial/home">
-          <div className="fixed left-1/2 -translate-x-1/2 top-[25px] z-[9990] hidden lg:flex items-center h-[40px]">
+          <div className="fixed left-1/2 -translate-x-1/2 top-[25px] z-[9990] hidden lg:flex items-center justify-center h-[40px]">
             <Image
               src="https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/render/image/public/document-uploads/ROTEIRO_EUROPA-removebg-preview-1765225025878.png"
               alt="Goiás Minas Uniformes Logo"
               width={280}
               height={70}
-              className="scale-120 mix-blend-difference !m-0 !my-0 !p-0 !w-full !h-[114px] !max-w-full"
+              className="object-contain h-full w-auto"
               priority />
           </div>
         </Link>
