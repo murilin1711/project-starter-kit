@@ -21,8 +21,8 @@ const Header = () => {
               alt="Goiás Minas Uniformes Logo"
               fill
               className="object-contain !w-[200px] !h-[326px] !max-w-[200px]"
-              priority
-            />
+              priority />
+
           </div>
         </Link>
       </div>
@@ -43,8 +43,8 @@ const Header = () => {
                     alt="Goiás Minas Uniformes Logo"
                     fill
                     className="object-contain p-1"
-                    priority
-                  />
+                    priority />
+
                 </div>
               </Link>
             </div>
