@@ -8,22 +8,34 @@ import Image from 'next/image';
 const Header = () => {
   const [activeSubmenu, setActiveSubmenu] = useState<string | null>(null);
   const [searchOpen, setSearchOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
   const navItems = ["Réveillon", "Men", "Women", "Shoes", "Gifts", "Outlet"];
+
+  useEffect(() => {
+    const handleScroll = () => {
+      // Detect if user has scrolled past the banner section (assumed ~100vh)
+      const bannerHeight = window.innerHeight;
+      setIsScrolled(window.scrollY > bannerHeight);
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   return (
     <>
-      {/* White background for header area */}
-      <div className="fixed top-0 left-0 right-0 h-[70px] bg-white z-40" />
+      {/* White background for header area - only show when not scrolled */}
+      <div className={`fixed top-0 left-0 right-0 h-[80px] bg-white z-40 transition-opacity duration-300 ${isScrolled ? 'opacity-0' : 'opacity-100'}`} />
       
       <header className="fixed w-full z-50">
-        {/* Desktop Logo - Center, aligned with nav height */}
+        {/* Desktop Logo - Center, aligned with nav height, larger size */}
         <Link href="/" aria-label="Ir para a página inicial/home">
-          <div className="fixed left-1/2 -translate-x-1/2 top-[20px] z-[9990] hidden lg:flex items-center h-[30px]">
+          <div className="fixed left-1/2 -translate-x-1/2 top-[25px] z-[9990] hidden lg:flex items-center h-[40px]">
             <Image
               src="https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/render/image/public/document-uploads/ROTEIRO_EUROPA-removebg-preview-1765225025878.png"
               alt="Goiás Minas Uniformes Logo"
-              width={200}
-              height={50}
+              width={280}
+              height={70}
               className="scale-120 mix-blend-difference !w-full !h-full !max-w-full !m-0 !my-0 !p-0"
               priority />
           </div>
@@ -59,17 +71,17 @@ const Header = () => {
           </div>
         </div>
 
-        {/* Desktop: Left Navigation Section (Floating) */}
+        {/* Desktop: Left Navigation Section (Floating) - aligned with logo */}
         <div
-          className="hidden lg:block absolute left-0 my-5 mx-[15px] xll:mx-[30px] z-[60]"
+          className="hidden lg:block absolute left-0 top-[25px] mx-[15px] xll:mx-[30px] z-[60]"
           onMouseLeave={() => setActiveSubmenu(null)}>
-          <nav className="flex bg-white/50 backdrop-blur-md rounded-xl px-1 h-[30px] items-center shadow-sm">
+          <nav className="flex bg-white/50 backdrop-blur-md rounded-xl px-1 h-[40px] items-center shadow-sm">
             <ul className="flex flex-row items-center gap-1.5">
               {navItems.map((item) =>
               <li key={item} className="flex">
                   <button
                   onMouseEnter={() => setActiveSubmenu(item)}
-                  className="font-suisse font-normal text-[15px] -tracking-[0.02em] text-black hover:bg-white/80 h-[26px] px-1.5 xll:px-2.5 rounded-lg transition-colors duration-200">
+                  className="font-suisse font-normal text-[15px] -tracking-[0.02em] text-black hover:bg-white/80 h-[34px] px-1.5 xll:px-2.5 rounded-lg transition-colors duration-200">
                     {item}
                   </button>
                 </li>
@@ -78,12 +90,12 @@ const Header = () => {
           </nav>
         </div>
 
-        {/* Desktop: Right Action Buttons (Floating) */}
-        <div className="hidden lg:flex absolute right-0 my-5 mx-[15px] xll:mx-[30px] items-center gap-1 z-[60]">
+        {/* Desktop: Right Action Buttons (Floating) - aligned with logo */}
+        <div className="hidden lg:flex absolute right-0 top-[25px] mx-[15px] xll:mx-[30px] items-center gap-1 z-[60]">
           {/* Search */}
           <div className="relative">
             <div
-              className={`h-[28px] bg-white/50 backdrop-blur-md rounded-lg shadow-sm transition-all duration-300 ${
+              className={`h-[38px] bg-white/50 backdrop-blur-md rounded-lg shadow-sm transition-all duration-300 ${
               searchOpen ? 'w-[220px] xl:w-[280px]' : 'w-[94px] xl:w-[120px]'} overflow-hidden`
               }>
               {searchOpen ?
@@ -107,17 +119,17 @@ const Header = () => {
         </div>
 
         {/* Account */}
-        <a href="/my-account" aria-label="Log in" className="font-suisse flex items-center justify-center w-[32px] h-[28px] p-[4px_6px] 4xl:px-[7px] text-black bg-white/50 backdrop-blur-md rounded-lg shadow-sm">
+        <a href="/my-account" aria-label="Log in" className="font-suisse flex items-center justify-center w-[38px] h-[38px] p-[4px_6px] 4xl:px-[7px] text-black bg-white/50 backdrop-blur-md rounded-lg shadow-sm">
           <User className="w-5 h-5 4xl:w-[18px] 4xl:h-[18px]" />
         </a>
 
         {/* Wishlist */}
-        <a href="/wishlist" aria-label="Wishlist" className="font-suisse flex items-center justify-center w-[32px] h-[28px] p-[4px_6px] text-black bg-white/50 backdrop-blur-md rounded-lg shadow-sm">
+        <a href="/wishlist" aria-label="Wishlist" className="font-suisse flex items-center justify-center w-[38px] h-[38px] p-[4px_6px] text-black bg-white/50 backdrop-blur-md rounded-lg shadow-sm">
           <Heart className="w-5 h-5 4xl:w-[18px] 4xl:h-[18px]" />
         </a>
 
         {/* Bag */}
-        <button aria-label="open cart" className="font-suisse z-10 flex items-center justify-center gap-1 lm:w-[67px] h-[28px] text-[15px] bg-white/50 backdrop-blur-md rounded-lg text-black -tracking-0.02 px-2 shadow-sm">
+        <button aria-label="open cart" className="font-suisse z-10 flex items-center justify-center gap-1 lm:w-[85px] h-[38px] text-[15px] bg-white/50 backdrop-blur-md rounded-lg text-black -tracking-0.02 px-2 shadow-sm">
           <span>Bag</span>
           <ShoppingBag className="w-5 h-5 -mt-px" />
         </button>
