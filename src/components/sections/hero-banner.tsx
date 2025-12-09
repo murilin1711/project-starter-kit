@@ -121,15 +121,15 @@ const HeroBanner = () => {
         )}
       </div>
 
-      {/* Slides */}
+      {/* Slides - MUDANÇA PRINCIPAL AQUI */}
       <div 
         id="hero-banner" 
-        className="relative z-10 w-full h-auto lg:h-full pt-16 pb-6 px-4 lg:pt-24 lg:pb-8 lg:px-8"
+        className="relative z-10 w-full h-full flex items-center justify-center px-4"
         onTouchStart={handleTouchStart}
         onTouchMove={handleTouchMove}
         onTouchEnd={handleTouchEnd}
       >
-        <div className="relative w-full max-w-[90%] mx-auto lg:max-w-[90%] overflow-hidden rounded-xl lg:rounded-3xl shadow-lg lg:shadow-[0_8px_30px_rgba(0,0,0,0.12)] transition-shadow duration-300 aspect-video lg:aspect-auto lg:h-full">
+        <div className="relative w-full max-w-[95%] lg:max-w-[90%] overflow-hidden rounded-xl lg:rounded-3xl shadow-lg lg:shadow-[0_8px_30px_rgba(0,0,0,0.12)] transition-shadow duration-300 aspect-video">
           
           {slides.map((slide, index) =>
             <div
