@@ -61,8 +61,8 @@ const Header = () => {
                   <Image
                     src="https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/render/image/public/document-uploads/ROTEIRO_EUROPA-removebg-preview-1765225025878.png"
                     alt="Goiás Minas Uniformes Logo"
-                    width={220}
-                    height={70}
+                    width={320}
+                    height={170}
                     className="object-contain !w-auto !h-[70px]"
                     priority
                   />
