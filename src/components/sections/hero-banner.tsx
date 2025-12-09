@@ -5,19 +5,19 @@ import { Volume2, VolumeX } from 'lucide-react';
 
 const slides = [
   {
-    type: 'video',
+    type: 'video' as const,
     url: 'https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/object/public/document-uploads/Venha-nos-fazer-uma-visita-a-equipe-Goias-Minas-esta-pronta-para-te-atender-1-1765241617616.mp4',
     title: "",
     link: ""
   },
   {
-    type: 'image',
+    type: 'image' as const,
     url: 'https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/render/image/public/document-uploads/goiasminas-1765250868843.jpg?width=8000&height=8000&resize=contain',
     title: "",
     link: ""
   },
   {
-    type: 'image',
+    type: 'image' as const,
     url: 'https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/render/image/public/document-uploads/Uniforme-escolar-com-qualidade-e-conforto-Apresentamos-as-camisetas-da-Escola-Decisivo-Jun-1765250868958.jpg?width=8000&height=8000&resize=contain',
     title: "",
     link: ""
@@ -27,85 +27,121 @@ const slides = [
 const HeroBanner = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [isMuted, setIsMuted] = useState(true);
-  const videoRefs = useRef([]);
-  const bgVideoRefs = useRef([]);
-  const touchStartX = useRef(0);
-  const touchEndX = useRef(0);
+  const videoRefs = useRef<(HTMLVideoElement | null)[]>([]);
+  const bgVideoRefs = useRef<(HTMLVideoElement | null)[]>([]);
+  const touchStartX = useRef<number>(0);
+  const touchEndX = useRef<number>(0);
 
   const toggleMute = () => {
     setIsMuted(!isMuted);
-    videoRefs.current.forEach((video) => video && (video.muted = !isMuted));
-    bgVideoRefs.current.forEach((video) => video && (video.muted = !isMuted));
+
+    videoRefs.current.forEach((video) => {
+      if (video) video.muted = !isMuted;
+    });
+    bgVideoRefs.current.forEach((video) => {
+      if (video) video.muted = !isMuted;
+    });
   };
 
-  const handleVideoEnd = () => setCurrentSlide((prev) => (prev + 1) % slides.length);
+  const handleVideoEnd = () => {
+    setCurrentSlide((prev) => (prev + 1) % slides.length);
+  };
 
-  const handleTouchStart = (e) => (touchStartX.current = e.touches[0].clientX);
-  const handleTouchMove = (e) => (touchEndX.current = e.touches[0].clientX);
+  const handleTouchStart = (e: React.TouchEvent) => {
+    touchStartX.current = e.touches[0].clientX;
+  };
+
+  const handleTouchMove = (e: React.TouchEvent) => {
+    touchEndX.current = e.touches[0].clientX;
+  };
 
   const handleTouchEnd = () => {
-    if (touchStartX.current - touchEndX.current > 50) setCurrentSlide((p) => (p + 1) % slides.length);
-    if (touchEndX.current - touchStartX.current > 50) setCurrentSlide((p) => (p - 1 + slides.length) % slides.length);
+    if (touchStartX.current - touchEndX.current > 50) {
+      setCurrentSlide((prev) => (prev + 1) % slides.length);
+    }
+
+    if (touchEndX.current - touchStartX.current > 50) {
+      setCurrentSlide((prev) => (prev - 1 + slides.length) % slides.length);
+    }
   };
 
   useEffect(() => {
-    videoRefs.current.forEach((video, i) => {
+    videoRefs.current.forEach((video, index) => {
       if (video) {
-        if (i === currentSlide) {
+        if (index === currentSlide) {
           video.currentTime = 0;
           video.muted = isMuted;
           video.play();
-        } else video.pause();
+        } else {
+          video.pause();
+        }
       }
     });
-
-    bgVideoRefs.current.forEach((video, i) => {
+    
+    bgVideoRefs.current.forEach((video, index) => {
       if (video) {
-        if (i === currentSlide) {
+        if (index === currentSlide) {
           video.currentTime = 0;
           video.muted = isMuted;
           video.play();
-        } else video.pause();
+        } else {
+          video.pause();
+        }
       }
     });
   }, [currentSlide, isMuted]);
 
   return (
-    <section className="relative w-full h-screen overflow-hidden">
+    <section className="relative w-full h-screen lg:h-screen overflow-hidden">
+      
+      {/* Background Videos */}
       <div className="absolute inset-0 z-0">
         {slides.map((slide, index) =>
           slide.type === 'video' ? (
-            <div key={`bg-${index}`} className={`absolute inset-0 transition-opacity duration-1000 ${index === currentSlide ? 'opacity-100' : 'opacity-0 pointer-events-none'}`}>
+            <div
+              key={`bg-${index}`}
+              className={`absolute inset-0 transition-opacity duration-1000 ${
+                index === currentSlide ? 'opacity-100' : 'opacity-0 pointer-events-none'
+              }`}
+            >
               <video
-                ref={(el) => (bgVideoRefs.current[index] = el)}
-                className="h-full w-full object-cover object-center blur-md"
+                ref={(el) => {bgVideoRefs.current[index] = el;}}
+                className="h-full w-full object-cover blur-md"
                 autoPlay
                 loop
                 muted={isMuted}
                 playsInline
+                aria-hidden="true"
               >
                 <source src={slide.url} type="video/mp4" />
               </video>
-              <div className="absolute inset-0 bg-black/20" />
+              <div className="absolute inset-0 bg-black/20" aria-hidden="true" />
             </div>
           ) : null
         )}
       </div>
 
-      <div
-        id="hero-banner"
-        className="relative z-10 w-full h-auto pt-16 pb-6 px-4"
+      {/* Slides */}
+      <div 
+        id="hero-banner" 
+        className="relative z-10 w-full h-auto lg:h-full pt-16 pb-6 px-4 lg:pt-24 lg:pb-8 lg:px-8"
         onTouchStart={handleTouchStart}
         onTouchMove={handleTouchMove}
         onTouchEnd={handleTouchEnd}
       >
-        <div className="relative w-full max-w-[90%] mx-auto overflow-hidden rounded-xl shadow-lg aspect-video">
-          {slides.map((slide, index) => (
-            <div key={index} className={`absolute inset-0 transition-opacity duration-1000 ${index === currentSlide ? 'opacity-100' : 'opacity-0 pointer-events-none'}`}>
+        <div className="relative w-full max-w-[90%] mx-auto lg:max-w-[90%] overflow-hidden rounded-xl lg:rounded-3xl shadow-lg lg:shadow-[0_8px_30px_rgba(0,0,0,0.12)] transition-shadow duration-300 aspect-video lg:aspect-auto lg:h-full">
+          
+          {slides.map((slide, index) =>
+            <div
+              key={index}
+              className={`absolute inset-0 transition-opacity duration-1000 ${
+                index === currentSlide ? 'opacity-100' : 'opacity-0 pointer-events-none'
+              }`}
+            >
               {slide.type === 'video' ? (
                 <video
-                  ref={(el) => (videoRefs.current[index] = el)}
-                  className="h-full w-full object-cover object-center rounded-xl"
+                  ref={(el) => {videoRefs.current[index] = el;}}
+                  className="h-full w-full object-cover rounded-xl lg:rounded-3xl"
                   autoPlay
                   loop
                   muted={isMuted}
@@ -115,39 +151,57 @@ const HeroBanner = () => {
                   <source src={slide.url} type="video/mp4" />
                 </video>
               ) : (
-                <img src={slide.url} className="h-full w-full object-cover object-center rounded-xl" />
+                <img
+                  src={slide.url}
+                  className="h-full w-full object-cover rounded-xl lg:rounded-3xl"
+                />
               )}
 
-              <div className="absolute inset-0 bg-white/10 rounded-xl" />
+              <div className="absolute inset-0 z-10 bg-white/10 rounded-xl lg:rounded-3xl" />
 
               <div className="absolute inset-0 z-20 flex flex-col items-center justify-center text-center">
                 <div className="flex flex-col items-center gap-4">
-                  <h1 className="text-4xl font-medium tracking-tight text-black whitespace-pre-line">{slide.title}</h1>
-                  <a className="text-sm font-medium underline underline-offset-4 text-black whitespace-pre-line">{slide.link}</a>
+                  <h1 className="text-4xl lg:text-6xl font-medium tracking-tight text-black !whitespace-pre-line">
+                    {slide.title}
+                  </h1>
+                  <a href="#" className="text-sm font-medium tracking-tight underline underline-offset-4 text-black !whitespace-pre-line">
+                    {slide.link}
+                  </a>
                 </div>
               </div>
             </div>
-          ))}
+          )}
 
+          {/* CTA */}
           <div className="absolute bottom-20 left-1/2 -translate-x-1/2 z-30">
-            <button className="bg-white px-8 py-3 rounded-lg font-bold shadow-lg">Compre Agora</button>
+            <button className="bg-white px-8 py-3 rounded-lg font-bold text-blue-#2e3092 hover:bg-white/90 transition-colors duration-200 shadow-lg">
+              Compre Agora
+            </button>
           </div>
 
+          {/* Controle de Som */}
           {slides[currentSlide].type === 'video' && (
-            <button onClick={toggleMute} className="absolute bottom-8 right-8 z-30 w-10 h-10 flex items-center justify-center bg-white/80 backdrop-blur-sm rounded-full">
+            <button
+              onClick={toggleMute}
+              className="absolute bottom-8 right-8 z-30 w-10 h-10 flex items-center justify-center bg-white/80 backdrop-blur-sm rounded-full"
+            >
               {isMuted ? <VolumeX className="w-5 h-5" /> : <Volume2 className="w-5 h-5" />}
             </button>
           )}
 
+          {/* Dots */}
           <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-30 flex gap-2">
-            {slides.map((_, index) => (
+            {slides.map((_, index) =>
               <button
                 key={index}
                 onClick={() => setCurrentSlide(index)}
-                className={`w-2 h-2 rounded-full transition-all duration-300 ${index === currentSlide ? 'bg-black w-6' : 'bg-black/30'}`}
+                className={`w-2 h-2 rounded-full transition-all duration-300 ${
+                  index === currentSlide ? 'bg-black w-6' : 'bg-black/30'
+                }`}
               />
-            ))}
+            )}
           </div>
+
         </div>
       </div>
     </section>
