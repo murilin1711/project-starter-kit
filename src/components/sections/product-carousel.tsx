@@ -122,25 +122,6 @@ const ProductCard = ({ product }: {product: Product;}) =>
 const ProductCarousel = () => {
   return (
     <section className="bg-[#F5F5F5] w-full py-10 lg:py-15">
-      <div className="max-w-[1440px] mx-auto px-4 sm:px-6 xll:px-[30px]">
-        <nav aria-label="Breadcrumb" className="text-text-tertiary text-body-sm text-center md:text-left">
-          <ol className="inline-flex items-center space-x-1">
-            <li className="inline-flex items-center">
-              <a href="#" className="hover:text-text-primary">Home</a>
-            </li>
-            <li>
-              <div className="flex items-center">
-                <span className="mx-2">/</span>
-                <span>Shop All</span>
-              </div>
-            </li>
-          </ol>
-        </nav>
-        <h2 className="text-2xl md:text-[32px] text-text-secondary font-medium leading-tight text-center max-w-[900px] mx-auto mt-4 mb-8 !whitespace-pre-line">Nossa tradição em uniformes escolares garante qualidade para diversas instituições parceiras.
-
-        </h2>
-      </div>
-
       <div className="mt-8">
         <div className="overflow-x-auto scrollbar-hide">
           <div className="flex items-center space-x-2 whitespace-nowrap px-4 sm:px-6 xll:px-[30px]">
@@ -168,12 +149,6 @@ const ProductCarousel = () => {
             )}
           </div>
         </div>
-      </div>
-      
-      <div className="max-w-lg mx-auto px-4 sm:px-6 xll:px-[30px] mt-8">
-          <div className="w-full h-[2px] bg-gray-300 rounded-full">
-              <div className="w-2/5 h-full bg-gray-600 rounded-full"></div>
-          </div>
       </div>
     </section>);
 
