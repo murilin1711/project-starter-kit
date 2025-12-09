@@ -1,8 +1,42 @@
 "use client";
 
-import Image from "next/image";
+import { useEffect, useRef } from "react";
+import maplibregl from "maplibre-gl";
+import "maplibre-gl/dist/maplibre-gl.css";
 
 const StoreLocator = () => {
+  const mapContainer = useRef<HTMLDivElement>(null);
+  const map = useRef<maplibregl.Map | null>(null);
+
+  useEffect(() => {
+    if (map.current || !mapContainer.current) return;
+
+    // Coordenadas da loja
+    const empresa = {
+      lat: -16.328470,
+      lng: -48.952870
+    };
+
+    map.current = new maplibregl.Map({
+      container: mapContainer.current,
+      style: `https://api.maptiler.com/maps/dataviz-light/style.json?key=1gXFt9mkSWAwobaSVONk`,
+      center: [empresa.lng, empresa.lat],
+      zoom: 16
+    });
+
+    // Adiciona controles de zoom
+    map.current.addControl(new maplibregl.NavigationControl());
+
+    // Marcador vermelho
+    new maplibregl.Marker({ color: "red" })
+      .setLngLat([empresa.lng, empresa.lat])
+      .addTo(map.current);
+
+    return () => {
+      map.current?.remove();
+    };
+  }, []);
+
   return (
     <section className="bg-background-secondary py-10 lg:py-[75px]">
       <div className="max-w-[1440px] mx-auto px-4 md:px-8">
@@ -26,21 +60,19 @@ const StoreLocator = () => {
               </div>
             </div>
 
-            {/* Right Column: Image */}
+            {/* Right Column: Interactive Map */}
             <div className="lg:col-span-3 relative min-h-[300px] md:min-h-[400px] lg:min-h-full">
-              <Image
-                src="https://images.unsplash.com/photo-1582298539250-e65863215a7a?q=80&w=1974&auto=format&fit=crop"
-                alt="Interior de uma loja Osklen com design minimalista, paredes de concreto, roupas brancas e móveis de madeira."
-                fill
-                sizes="(max-width: 1023px) 100vw, 60vw"
-                className="object-cover" />
-
+              <div 
+                ref={mapContainer} 
+                className="absolute inset-0 w-full h-full rounded-xl"
+                style={{ minHeight: '400px' }}
+              />
             </div>
           </div>
         </div>
       </div>
-    </section>);
-
+    </section>
+  );
 };
 
 export default StoreLocator;
