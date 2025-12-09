@@ -9,6 +9,7 @@ const Header = () => {
   const [activeSubmenu, setActiveSubmenu] = useState<string | null>(null);
   const [searchOpen, setSearchOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const navItems = ["Escolas", "Empresas", "Personalizadas", "Sobre", "FAQ", ""];
 
   useEffect(() => {
@@ -40,35 +41,91 @@ const Header = () => {
           </div>
         </Link>
 
-        {/* Mobile Logo */}
-        <Link href="/" aria-label="Ir para a página inicial/home">
-          <div className="w-[200px] h-[50px] relative">
+        {/* Mobile Header Container */}
+        <div className="lg:hidden fixed top-0 left-0 right-0 h-[80px] flex items-center justify-between px-4">
+          {/* Left: Menu Hamburger */}
+          <button
+            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+            aria-label="Toggle menu"
+            className="w-[48px] h-[48px] flex items-center justify-center bg-white/50 backdrop-blur-md rounded-full shadow-sm z-50">
+            {mobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
+          </button>
+
+          {/* Center: Logo */}
+          <Link href="/" aria-label="Ir para a página inicial/home" className="absolute left-1/2 -translate-x-1/2 z-40">
             <Image
               src="https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/render/image/public/document-uploads/ROTEIRO_EUROPA-removebg-preview-1765225025878.png"
               alt="Goiás Minas Uniformes Logo"
-              width={70}
-              height={43}
-              className="absolute top-0 left-0 mt-5 mb-5 ml-1 lg:hidden rounded-full"
+              width={120}
+              height={120}
+              className="object-contain w-[120px] h-[120px]"
               priority />
-          </div>
-        </Link>
+          </Link>
 
-        {/* Mobile Navigation Bar */}
-        <div className="lg:hidden absolute right-0 w-[calc(100%-5.625rem)] h-[43px] my-5 mr-1.5 flex items-center justify-between bg-white/50 backdrop-blur-md rounded-full shadow-sm">
-          <button className="font-suisse pr-2 py-1 text-[13px] text-black ml-10">Menu</button>
-          
-          <div className="flex items-center ml-auto gap-5 h-[43px]">
+          {/* Right: Action Icons */}
+          <div className="flex items-center gap-2 z-50">
             <button
               onClick={() => setSearchOpen(!searchOpen)}
-              className="font-suisse text-[13px] -tracking-0.02 text-black flex items-center gap-1">
-              <span>Buscar</span>
-              <Search size={16} />
+              aria-label="Buscar"
+              className="w-[48px] h-[48px] flex items-center justify-center bg-white/50 backdrop-blur-md rounded-full shadow-sm">
+              <Search size={20} />
             </button>
-            <button aria-label="open cart" className="font-suisse z-10 flex items-center justify-center gap-1 w-12 h-7 text-[13px] rounded-lg text-black -tracking-0.02">
-              <ShoppingBag className="w-5 h-5 -mt-px" />
+            <button
+              aria-label="Sacola"
+              className="w-[48px] h-[48px] flex items-center justify-center bg-white/50 backdrop-blur-md rounded-full shadow-sm">
+              <ShoppingBag size={20} />
             </button>
+            <a
+              href="/my-account"
+              aria-label="Perfil"
+              className="w-[48px] h-[48px] flex items-center justify-center bg-white/50 backdrop-blur-md rounded-full shadow-sm">
+              <User size={20} />
+            </a>
           </div>
         </div>
+
+        {/* Mobile Menu Overlay */}
+        {mobileMenuOpen && (
+          <div className="lg:hidden fixed inset-0 z-40 pt-[80px]">
+            <div className="absolute inset-0 bg-black/20 backdrop-blur-sm" onClick={() => setMobileMenuOpen(false)} />
+            <div className="relative bg-white/95 backdrop-blur-xl w-full max-w-sm mx-auto rounded-b-3xl shadow-2xl p-6">
+              <nav>
+                <ul className="space-y-4">
+                  {navItems.filter(item => item).map((item) => (
+                    <li key={item}>
+                      <Link
+                        href="#"
+                        onClick={() => setMobileMenuOpen(false)}
+                        className="block font-suisse text-[18px] font-medium text-black py-3 px-4 rounded-lg hover:bg-white/80 transition-colors">
+                        {item}
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              </nav>
+            </div>
+          </div>
+        )}
+
+        {/* Mobile Search Overlay */}
+        {searchOpen && (
+          <div className="lg:hidden fixed inset-0 z-[60] bg-white/95 backdrop-blur-xl pt-[80px] px-4">
+            <div className="max-w-md mx-auto">
+              <div className="flex items-center gap-3 bg-white rounded-full shadow-lg px-4 py-3">
+                <Search size={20} className="text-gray-500" />
+                <input
+                  type="text"
+                  placeholder="Buscar..."
+                  autoFocus
+                  className="flex-1 bg-transparent border-none outline-none text-[16px] font-suisse text-black placeholder:text-gray-500"
+                  onBlur={() => setTimeout(() => setSearchOpen(false), 100)} />
+                <button onClick={() => setSearchOpen(false)} className="text-gray-500">
+                  <X size={20} />
+                </button>
+              </div>
+            </div>
+          </div>
+        )}
 
         {/* Desktop: Left Navigation Section (Floating) - aligned with logo */}
         <div
