@@ -1,42 +1,6 @@
 "use client";
 
-import { useEffect, useRef } from "react";
-import maplibregl from "maplibre-gl";
-import "maplibre-gl/dist/maplibre-gl.css";
-
 const StoreLocator = () => {
-  const mapContainer = useRef<HTMLDivElement>(null);
-  const map = useRef<maplibregl.Map | null>(null);
-
-  useEffect(() => {
-    if (map.current || !mapContainer.current) return;
-
-    // Coordenadas da loja
-    const empresa = {
-      lat: -16.328470,
-      lng: -48.952870
-    };
-
-    map.current = new maplibregl.Map({
-      container: mapContainer.current,
-      style: "https://api.maptiler.com/maps/bright/style.json?key=1gXFt9mkSWAwobaSVONk",
-      center: [empresa.lng, empresa.lat],
-      zoom: 16
-    });
-
-    // Controles de zoom
-    map.current.addControl(new maplibregl.NavigationControl());
-
-    // Marcador vermelho
-    new maplibregl.Marker({ color: "red" })
-      .setLngLat([empresa.lng, empresa.lat])
-      .addTo(map.current);
-
-    return () => {
-      map.current?.remove();
-    };
-  }, []);
-
   return (
     <section className="bg-background-secondary py-10 lg:py-[75px]">
       <div className="max-w-[1440px] mx-auto px-4 md:px-8">
@@ -58,11 +22,15 @@ const StoreLocator = () => {
               </div>
             </div>
 
-            {/* Right Column: Interactive Map */}
-            <div className="lg:col-span-3 relative h-[400px] lg:h-auto">
-              <div 
-                ref={mapContainer} 
+            {/* Right Column: Google Maps */}
+            <div className="lg:col-span-3 relative h-[400px] lg:h-[600px]">
+              <iframe 
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15315.143794758427!2d-48.97124885617734!3d-16.333877800151164!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x935ea473e20aa08d%3A0xd12ceb94de43fa2e!2sGM%20-%20Goi%C3%A1s%20Minas!5e0!3m2!1spt-BR!2sbr!4v1765249333479!5m2!1spt-BR!2sbr"
                 className="w-full h-full rounded-xl"
+                style={{ border: 0 }}
+                allowFullScreen
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
               />
             </div>
           </div>
