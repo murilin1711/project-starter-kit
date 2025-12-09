@@ -92,10 +92,10 @@ const HeroBanner = () => {
   }, [currentSlide, isMuted]);
 
   return (
-    <section className="relative w-full h-screen overflow-hidden flex items-center justify-center">
+    <section className="relative w-full min-h-[calc(100vh-80px)] md:min-h-[calc(100vh-100px)] flex items-center justify-center overflow-hidden mt-[80px] md:mt-[100px]">
       
-      {/* Background Videos - Centralizado também */}
-      <div className="absolute inset-0 z-0 flex items-center justify-center">
+      {/* Background Videos */}
+      <div className="absolute inset-0 z-0">
         {slides.map((slide, index) =>
           slide.type === 'video' ? (
             <div
@@ -104,26 +104,24 @@ const HeroBanner = () => {
                 index === currentSlide ? 'opacity-100' : 'opacity-0 pointer-events-none'
               }`}
             >
-              <div className="w-full h-full flex items-center justify-center">
-                <video
-                  ref={(el) => {bgVideoRefs.current[index] = el;}}
-                  className="w-full h-full object-cover blur-md"
-                  autoPlay
-                  loop
-                  muted={isMuted}
-                  playsInline
-                  aria-hidden="true"
-                >
-                  <source src={slide.url} type="video/mp4" />
-                </video>
-                <div className="absolute inset-0 bg-black/20" aria-hidden="true" />
-              </div>
+              <video
+                ref={(el) => {bgVideoRefs.current[index] = el;}}
+                className="h-full w-full object-cover blur-md"
+                autoPlay
+                loop
+                muted={isMuted}
+                playsInline
+                aria-hidden="true"
+              >
+                <source src={slide.url} type="video/mp4" />
+              </video>
+              <div className="absolute inset-0 bg-black/20" aria-hidden="true" />
             </div>
           ) : null
         )}
       </div>
 
-      {/* Slides - Container centralizado */}
+      {/* Slides Container */}
       <div 
         id="hero-banner" 
         className="relative z-10 w-full flex items-center justify-center p-4 md:p-6 lg:p-8"
@@ -141,26 +139,22 @@ const HeroBanner = () => {
               }`}
             >
               {slide.type === 'video' ? (
-                <div className="w-full h-full flex items-center justify-center">
-                  <video
-                    ref={(el) => {videoRefs.current[index] = el;}}
-                    className="w-full h-full object-cover rounded-xl lg:rounded-3xl"
-                    autoPlay
-                    loop
-                    muted={isMuted}
-                    playsInline
-                    onEnded={handleVideoEnd}
-                  >
-                    <source src={slide.url} type="video/mp4" />
-                  </video>
-                </div>
+                <video
+                  ref={(el) => {videoRefs.current[index] = el;}}
+                  className="h-full w-full object-cover rounded-xl lg:rounded-3xl"
+                  autoPlay
+                  loop
+                  muted={isMuted}
+                  playsInline
+                  onEnded={handleVideoEnd}
+                >
+                  <source src={slide.url} type="video/mp4" />
+                </video>
               ) : (
-                <div className="w-full h-full flex items-center justify-center">
-                  <img
-                    src={slide.url}
-                    className="w-full h-full object-cover rounded-xl lg:rounded-3xl"
-                  />
-                </div>
+                <img
+                  src={slide.url}
+                  className="h-full w-full object-cover rounded-xl lg:rounded-3xl"
+                />
               )}
 
               <div className="absolute inset-0 z-10 bg-white/10 rounded-xl lg:rounded-3xl" />
