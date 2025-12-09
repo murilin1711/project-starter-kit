@@ -18,7 +18,7 @@ const CategoryShowcase = () => {
 
             <div className="absolute bottom-6 left-6">
               <div className="bg-white rounded-lg px-4 py-2 shadow-md">
-                <h3 className="text-blue-600">Empresarial</h3>
+                <h3 className="#2e3091">Empresarial</h3>
               </div>
             </div>
           </div>
