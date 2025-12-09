@@ -81,8 +81,8 @@ const ProductCarousel = () => {
             </li>
           </ol>
         </nav>
-        <h2 className="text-2xl md:text-[32px] text-text-secondary font-medium leading-tight text-center max-w-[900px] mx-auto mt-4 mb-8">
-          Uma manifestação estética e cultural que celebra o legado dos povos litorâneos e a relação intrínseca entre o homem e o mar.
+        <h2 className="text-2xl md:text-[32px] text-text-secondary font-medium leading-tight text-center max-w-[900px] mx-auto mt-4 mb-8">Nossa tradição em uniformes escolares garante qualidade para diversas instituições parceiras.
+
         </h2>
       </div>
 
