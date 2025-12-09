@@ -43,13 +43,21 @@ const Header = () => {
 
         {/* Mobile Header Container */}
         <div className="lg:hidden fixed top-0 left-0 right-0 h-[80px] flex items-center justify-between px-4">
-          {/* Left: Menu Hamburger */}
-          <button
-            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            aria-label="Toggle menu"
-            className="w-[48px] h-[48px] flex items-center justify-center bg-white/50 backdrop-blur-md rounded-full shadow-sm z-50">
-            {mobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
-          </button>
+          {/* Left: Menu Hamburger + Search */}
+          <div className="flex items-center gap-2 z-50">
+            <button
+              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+              aria-label="Toggle menu"
+              className="w-[48px] h-[48px] flex items-center justify-center bg-white/50 backdrop-blur-md rounded-full shadow-sm">
+              {mobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
+            </button>
+            <button
+              onClick={() => setSearchOpen(!searchOpen)}
+              aria-label="Buscar"
+              className="w-[48px] h-[48px] flex items-center justify-center bg-white/50 backdrop-blur-md rounded-full shadow-sm">
+              <Search size={20} />
+            </button>
+          </div>
 
           {/* Center: Logo */}
           <Link href="/" aria-label="Ir para a página inicial/home" className="absolute left-1/2 -translate-x-1/2 z-40">
@@ -62,14 +70,8 @@ const Header = () => {
               priority />
           </Link>
 
-          {/* Right: Action Icons */}
+          {/* Right: Bag + Profile */}
           <div className="flex items-center gap-2 z-50">
-            <button
-              onClick={() => setSearchOpen(!searchOpen)}
-              aria-label="Buscar"
-              className="w-[48px] h-[48px] flex items-center justify-center bg-white/50 backdrop-blur-md rounded-full shadow-sm">
-              <Search size={20} />
-            </button>
             <button
               aria-label="Sacola"
               className="w-[48px] h-[48px] flex items-center justify-center bg-white/50 backdrop-blur-md rounded-full shadow-sm">
