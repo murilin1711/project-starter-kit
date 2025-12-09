@@ -35,7 +35,7 @@ const Header = () => {
             className="flex-1 flex items-center justify-start !text-left !px-0 !m-0 !p-0"
             onMouseLeave={() => setActiveSubmenu(null)}>
 
-            <nav className="flex bg-white/50 backdrop-blur-md rounded-xl h-[40px] items-center shadow-sm !justify-start !px-0">
+            <nav className="flex bg-white/50 backdrop-blur-md rounded-xl h-[40px] items-center shadow-sm !justify-start !text-right !px-0">
               <ul className="flex flex-row items-center gap-2">
                 {navItems.map((item) =>
                 item ?
