@@ -125,7 +125,6 @@ const StoreLocator = () => {
                 <div className="flex items-center justify-between">
                   <div>
                     <p className="font-medium text-gray-900">📍 Você está aqui</p>
-                    <p className="text-sm text-gray-600">GM - Goiás Minas Uniformes</p>
                   </div>
                   <div className="text-right">
                     <div className="text-xs text-gray-500">Aberto agora</div>
