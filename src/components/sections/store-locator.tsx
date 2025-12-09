@@ -121,46 +121,6 @@ const StoreLocator = () => {
             </div>
           </div>
         </div>
-
-        {/* Informações adicionais */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-8">
-          <div className="bg-white rounded-2xl p-6 shadow-sm border border-gray-100 hover:shadow-md transition-shadow">
-            <div className="flex items-center gap-4">
-              <div className="w-12 h-12 bg-blue-50 rounded-xl flex items-center justify-center">
-                <MapPin className="w-6 h-6 text-[#2e3091]" />
-              </div>
-              <div>
-                <h4 className="font-semibold text-gray-900">Fácil Localização</h4>
-                <p className="text-sm text-gray-600 !whitespace-pre-line">Centro de Anápolis, perto dos principais pontos</p>
-              </div>
-            </div>
-          </div>
-          
-          <div className="bg-white rounded-2xl p-6 shadow-sm border border-gray-100 hover:shadow-md transition-shadow">
-            <div className="flex items-center gap-4">
-              <div className="w-12 h-12 bg-green-50 rounded-xl flex items-center justify-center">
-                <Car className="w-6 h-6 text-[#2e3091]" />
-              </div>
-              <div>
-                <h4 className="font-semibold text-gray-900">Estacionamento</h4>
-                <p className="text-sm text-gray-600">Vagas exclusivas para clientes</p>
-              </div>
-            </div>
-          </div>
-          
-          <div className="bg-white rounded-2xl p-6 shadow-sm border border-gray-100 hover:shadow-md transition-shadow">
-            <div className="flex items-center gap-4">
-              <div className="w-12 h-12 bg-purple-50 rounded-xl flex items-center justify-center">
-                <Clock className="w-6 h-6 text-[#2e3091]" />
-              </div>
-              <div>
-                <h4 className="font-semibold text-gray-900">Atendimento</h4>
-                <p className="text-sm text-gray-600">Profissionais especializados para te ajudar</p>
-              </div>
-            </div>
-          </div>
-        </div>
-
         {/* Texto adicional */}
         <div className="text-center mt-12 max-w-3xl mx-auto">
           <div className="bg-gradient-to-r from-blue-50 to-indigo-50 rounded-2xl p-8 border border-gray-100">
