@@ -24,8 +24,8 @@ const CategoryShowcase = () => {
                 style={{
                   backgroundImage: 'url(https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/render/image/public/document-uploads/grupo-de-homens-confiantes-em-uniformes-azuis-posando-em-um-cenario-de-fabrica-1765251165935.jpg?width=8000&height=8000&resize=contain)'
                 }}
-                aria-label="Uniforme empresarial para empresas"
-              />
+                aria-label="Uniforme empresarial para empresas" />
+
               <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-black/20 to-transparent" />
               
               {/* Conteúdo sobreposto */}
@@ -36,12 +36,12 @@ const CategoryShowcase = () => {
                       Empresarial
                     </h3>
                     <div className="w-10 h-10 flex items-center justify-center bg-[#2e3091] text-white rounded-full group-hover:bg-[#252a7a] transition-colors">
-                      <svg 
+                      <svg
                         className="w-5 h-5 transform group-hover:translate-x-1 transition-transform"
-                        fill="none" 
-                        stroke="currentColor" 
-                        viewBox="0 0 24 24"
-                      >
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24">
+
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
                       </svg>
                     </div>
@@ -65,8 +65,8 @@ const CategoryShowcase = () => {
                 style={{
                   backgroundImage: 'url(https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/object/public/document-uploads/medio-tiro-jovem-camisa-dobravel-1765251332163.jpg?width=8000&height=8000&resize=contain)'
                 }}
-                aria-label="Personalização de uniformes"
-              />
+                aria-label="Personalização de uniformes" />
+
               <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-black/20 to-transparent" />
               
               {/* Conteúdo sobreposto */}
@@ -77,12 +77,12 @@ const CategoryShowcase = () => {
                       Personalização
                     </h3>
                     <div className="w-10 h-10 flex items-center justify-center bg-[#2e3091] text-white rounded-full group-hover:bg-[#252a7a] transition-colors">
-                      <svg 
+                      <svg
                         className="w-5 h-5 transform group-hover:translate-x-1 transition-transform"
-                        fill="none" 
-                        stroke="currentColor" 
-                        viewBox="0 0 24 24"
-                      >
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24">
+
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
                       </svg>
                     </div>
@@ -102,8 +102,8 @@ const CategoryShowcase = () => {
         {/* Texto de destaque abaixo */}
         <div className="text-center mt-10 md:mt-14 max-w-2xl mx-auto">
           <div className="bg-gradient-to-r from-blue-50 to-purple-50 rounded-2xl p-6 md:p-8 border border-gray-100">
-            <p className="text-gray-700 text-base md:text-lg mb-4">
-              Independente do seu segmento, temos a solução ideal para uniformização da sua equipe.
+            <p className="text-gray-700 text-base md:text-lg mb-4">Independente do seu segmento, temos a solução ideal para uniformes.
+
             </p>
             <button className="bg-[#2e3091] text-white px-6 py-3 rounded-lg font-medium hover:bg-[#252a7a] transition-colors duration-300 shadow-md text-sm md:text-base">
               Falar com um consultor
@@ -111,8 +111,8 @@ const CategoryShowcase = () => {
           </div>
         </div>
       </div>
-    </section>
-  );
+    </section>);
+
 };
 
 export default CategoryShowcase;
