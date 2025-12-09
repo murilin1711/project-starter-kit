@@ -260,24 +260,6 @@ const ProductCarousel = () => {
             </div>
           </div>
         </div>
-
-        {/* Mensagem abaixo do carrossel */}
-        <div className="text-center mt-12 md:mt-16 max-w-2xl mx-auto">
-          <div className="bg-gradient-to-r from-blue-50 to-green-50 rounded-2xl p-6 md:p-8 border border-gray-100">
-            <div className="w-16 h-16 bg-[#2e3091] rounded-2xl flex items-center justify-center text-white text-2xl mx-auto mb-4">
-              🏫
-            </div>
-            <h3 className="text-xl md:text-2xl font-semibold text-gray-900 mb-3">
-              Faça parte desta rede
-            </h3>
-            <p className="text-gray-700 text-base md:text-lg mb-4">
-              Oferecemos uniformes escolares de alta qualidade, conforto e durabilidade para sua instituição.
-            </p>
-            <button className="bg-[#2e3091] text-white px-6 py-3 rounded-lg font-medium hover:bg-[#252a7a] transition-colors duration-300 shadow-md">
-              Solicitar orçamento para escola
-            </button>
-          </div>
-        </div>
       </div>
     </section>
   );
