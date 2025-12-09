@@ -11,8 +11,8 @@ const StoreLocator = () => {
             {/* Left Column: Content */}
             <div className="lg:col-span-2 p-10 lg:p-14 flex flex-col justify-center">
               <div className="bg-background-secondary rounded-lg p-6 lg:p-8 mb-8">
-                <h2 className="text-3xl lg:text-[40px] font-medium text-text-primary mb-6 leading-none tracking-[-0.02em]">
-                  Nossas lojas
+                <h2 className="text-3xl lg:text-[40px] font-medium text-text-primary mb-6 leading-none tracking-[-0.02em]">Nossa loja
+
                 </h2>
                 <p className="text-base text-text-secondary leading-tight mb-5 tracking-[-0.02em]">
                   Digite seu CEP e descubra a loja Osklen mais próxima de você:
@@ -33,14 +33,14 @@ const StoreLocator = () => {
                 alt="Interior de uma loja Osklen com design minimalista, paredes de concreto, roupas brancas e móveis de madeira."
                 fill
                 sizes="(max-width: 1023px) 100vw, 60vw"
-                className="object-cover"
-              />
+                className="object-cover" />
+
             </div>
           </div>
         </div>
       </div>
-    </section>
-  );
+    </section>);
+
 };
 
 export default StoreLocator;
