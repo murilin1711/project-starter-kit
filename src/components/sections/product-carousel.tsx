@@ -81,7 +81,7 @@ const ProductCarousel = () => {
             </li>
           </ol>
         </nav>
-        <h2 className="text-2xl md:text-[32px] text-text-secondary font-medium leading-tight text-center max-w-[900px] mx-auto mt-4 mb-8">Nossa tradição em uniformes escolares garante qualidade para diversas instituições parceiras.
+        <h2 className="text-2xl md:text-[32px] text-text-secondary font-medium leading-tight text-center max-w-[900px] mx-auto mt-4 mb-8 !whitespace-pre-line">Nossa tradição em uniformes escolares garante qualidade para diversas instituições parceiras.
 
         </h2>
       </div>
