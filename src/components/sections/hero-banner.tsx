@@ -31,31 +31,43 @@ const HeroBanner = () => {
   const bgVideoRefs = useRef<(HTMLVideoElement | null)[]>([]);
   const touchStartX = useRef<number>(0);
   const touchEndX = useRef<number>(0);
+  const [isMobile, setIsMobile] = useState(false);
+
+  // Detecta se é mobile
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+    
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
 
   const toggleMute = () => {
     const newMutedState = !isMuted;
     setIsMuted(newMutedState);
-
-    // Atualiza o estado de mute para todos os vídeos atuais
-    videoRefs.current.forEach((video) => {
-      if (video) {
-        video.muted = newMutedState;
-        // Tenta dar play novamente para garantir que o vídeo continue
-        if (!newMutedState) {
-          video.play().catch(e => console.log("Erro ao dar play no vídeo:", e));
-        }
-      }
-    });
     
-    bgVideoRefs.current.forEach((video) => {
-      if (video) {
-        video.muted = newMutedState;
-        // Tenta dar play novamente para garantir que o vídeo continue
-        if (!newMutedState) {
-          video.play().catch(e => console.log("Erro ao dar play no vídeo de fundo:", e));
+    // Atualiza todos os vídeos visíveis
+    if (slides[currentSlide].type === 'video') {
+      const currentVideo = videoRefs.current[currentSlide];
+      const currentBgVideo = bgVideoRefs.current[currentSlide];
+      
+      if (currentVideo) {
+        currentVideo.muted = newMutedState;
+        
+        // No mobile, quando desmutamos, tenta dar play novamente se o vídeo estiver pausado
+        if (isMobile && !newMutedState && currentVideo.paused) {
+          currentVideo.play().catch(e => console.log("Mobile play error:", e));
         }
       }
-    });
+      
+      if (currentBgVideo) {
+        // Background sempre mudo
+        currentBgVideo.muted = true;
+      }
+    }
   };
 
   const handleVideoEnd = () => {
@@ -80,35 +92,9 @@ const HeroBanner = () => {
     }
   };
 
-  // Efeito para controlar os slides
+  // Efeito para gerenciar slides e vídeos
   useEffect(() => {
-    videoRefs.current.forEach((video, index) => {
-      if (video) {
-        if (index === currentSlide) {
-          video.currentTime = 0;
-          video.muted = isMuted;
-          video.play().catch(e => console.log("Erro ao dar play no vídeo do slide:", e));
-        } else {
-          video.pause();
-        }
-      }
-    });
-    
-    bgVideoRefs.current.forEach((video, index) => {
-      if (video) {
-        if (index === currentSlide) {
-          video.currentTime = 0;
-          video.muted = isMuted;
-          video.play().catch(e => console.log("Erro ao dar play no vídeo de fundo do slide:", e));
-        } else {
-          video.pause();
-        }
-      }
-    });
-  }, [currentSlide]);
-
-  // Efeito separado para atualizar o mute quando isMuted muda
-  useEffect(() => {
+    // Configura todos os vídeos como mutados inicialmente
     videoRefs.current.forEach((video) => {
       if (video) {
         video.muted = isMuted;
@@ -117,15 +103,77 @@ const HeroBanner = () => {
     
     bgVideoRefs.current.forEach((video) => {
       if (video) {
-        video.muted = isMuted;
+        video.muted = true; // Background sempre mudo
       }
     });
-  }, [isMuted]);
+    
+    // Gerencia o slide atual
+    if (slides[currentSlide].type === 'video') {
+      const currentVideo = videoRefs.current[currentSlide];
+      const currentBgVideo = bgVideoRefs.current[currentSlide];
+      
+      if (currentVideo) {
+        currentVideo.currentTime = 0;
+        currentVideo.muted = isMuted;
+        
+        const playPromise = currentVideo.play();
+        if (playPromise !== undefined) {
+          playPromise.catch(e => {
+            console.log("Autoplay prevented:", e);
+            // No mobile, vídeos autoplay podem ser bloqueados
+            if (isMobile) {
+              // Espera interação do usuário
+              const enableVideo = () => {
+                currentVideo.play().catch(e => console.log("Play after interaction error:", e));
+                document.removeEventListener('touchstart', enableVideo);
+              };
+              document.addEventListener('touchstart', enableVideo, { once: true });
+            }
+          });
+        }
+      }
+      
+      if (currentBgVideo) {
+        currentBgVideo.currentTime = 0;
+        currentBgVideo.muted = true;
+        currentBgVideo.play().catch(e => console.log("Background video play error:", e));
+      }
+    }
+    
+    // Pausa outros vídeos
+    videoRefs.current.forEach((video, index) => {
+      if (video && index !== currentSlide) {
+        video.pause();
+        video.currentTime = 0;
+      }
+    });
+    
+    bgVideoRefs.current.forEach((video, index) => {
+      if (video && index !== currentSlide) {
+        video.pause();
+        video.currentTime = 0;
+      }
+    });
+    
+    // Cleanup function
+    return () => {
+      videoRefs.current.forEach((video) => {
+        if (video) {
+          video.pause();
+        }
+      });
+      bgVideoRefs.current.forEach((video) => {
+        if (video) {
+          video.pause();
+        }
+      });
+    };
+  }, [currentSlide, isMuted, isMobile]);
 
   return (
     <section className="relative w-full pt-[80px] md:pt-[100px] min-h-screen flex items-center justify-center overflow-hidden">
       
-      {/* Background Videos - Ocupa toda a tela como antes */}
+      {/* Background Videos - SEMPRE sem áudio */}
       <div className="absolute inset-0 z-0">
         {slides.map((slide, index) =>
           slide.type === 'video' ? (
@@ -140,7 +188,7 @@ const HeroBanner = () => {
                 className="h-full w-full object-cover blur-md"
                 autoPlay
                 loop
-                muted={isMuted}
+                muted={true}
                 playsInline
                 aria-hidden="true"
               >
@@ -152,7 +200,7 @@ const HeroBanner = () => {
         )}
       </div>
 
-      {/* Slides Container - Centralizado verticalmente */}
+      {/* Slides Container */}
       <div 
         id="hero-banner" 
         className="relative z-10 w-full flex items-center justify-center p-4 md:p-6 lg:p-8"
@@ -162,7 +210,7 @@ const HeroBanner = () => {
       >
         <div className="relative w-full max-w-full md:max-w-[85%] lg:max-w-[70%] overflow-hidden rounded-xl lg:rounded-3xl shadow-lg lg:shadow-[0_8px_30px_rgba(0,0,0,0.12)] transition-shadow duration-300 aspect-video">
           
-          {slides.map((slide, index) =>
+          {slides.map((slide, index) => (
             <div
               key={index}
               className={`absolute inset-0 transition-opacity duration-1000 ${
@@ -185,7 +233,7 @@ const HeroBanner = () => {
                 <img
                   src={slide.url}
                   className="h-full w-full object-cover rounded-xl lg:rounded-3xl"
-                  alt="Slide"
+                  alt="Banner slide"
                 />
               )}
 
@@ -202,11 +250,11 @@ const HeroBanner = () => {
                 </div>
               </div>
             </div>
-          )}
+          ))}
 
-          {/* CTA - Ajustado para mobile */}
+          {/* CTA - Atualizado para seguir o padrão */}
           <div className="absolute bottom-12 md:bottom-16 lg:bottom-20 left-1/2 -translate-x-1/2 z-30">
-            <button className="bg-white px-4 py-2 md:px-6 md:py-2.5 lg:px-8 lg:py-3 rounded-lg font-bold text-blue-#2e3092 hover:bg-white/90 transition-colors duration-200 shadow-lg text-sm md:text-base">
+            <button className="bg-[#2e3091] text-white px-6 md:px-8 lg:px-10 py-3 md:py-3.5 lg:py-4 rounded-xl md:rounded-2xl font-semibold hover:bg-[#252a7a] transition-all duration-300 shadow-lg hover:shadow-xl text-sm md:text-base lg:text-lg transform hover:scale-105">
               Compre Agora
             </button>
           </div>
@@ -215,23 +263,29 @@ const HeroBanner = () => {
           {slides[currentSlide].type === 'video' && (
             <button
               onClick={toggleMute}
-              className="absolute bottom-8 right-8 z-30 w-10 h-10 flex items-center justify-center bg-white/80 backdrop-blur-sm rounded-full hover:bg-white transition-colors duration-200"
+              className="absolute bottom-8 right-8 z-30 w-10 h-10 md:w-12 md:h-12 flex items-center justify-center bg-white/90 backdrop-blur-sm rounded-full hover:bg-white transition-all duration-300 shadow-md hover:shadow-lg"
+              aria-label={isMuted ? "Ativar som" : "Desativar som"}
             >
-              {isMuted ? <VolumeX className="w-5 h-5" /> : <Volume2 className="w-5 h-5" />}
+              {isMuted ? (
+                <VolumeX className="w-5 h-5 md:w-6 md:h-6 text-gray-700" />
+              ) : (
+                <Volume2 className="w-5 h-5 md:w-6 md:h-6 text-gray-700" />
+              )}
             </button>
           )}
 
           {/* Dots */}
           <div className="absolute bottom-4 md:bottom-6 lg:bottom-8 left-1/2 -translate-x-1/2 z-30 flex gap-2">
-            {slides.map((_, index) =>
+            {slides.map((_, index) => (
               <button
                 key={index}
                 onClick={() => setCurrentSlide(index)}
                 className={`w-2 h-2 rounded-full transition-all duration-300 ${
-                  index === currentSlide ? 'bg-black w-6' : 'bg-black/30'
+                  index === currentSlide ? 'bg-white w-6' : 'bg-white/60'
                 }`}
+                aria-label={`Ir para slide ${index + 1}`}
               />
-            )}
+            ))}
           </div>
 
         </div>
