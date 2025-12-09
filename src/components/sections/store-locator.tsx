@@ -43,9 +43,9 @@ const StoreLocator = () => {
                   {cities.map((city, index) =>
                   <button
                     key={city}
-                    className={`
-                        px-4 py-2 rounded-full text-sm font-medium transition-colors h-[38px]
-                        ${
+                    className={`px-4 py-2 rounded-full text-sm font-medium transition-colors h-[38px] !whitespace-pre-line ${
+
+
                     index === cities.length - 1 ?
                     "bg-primary text-primary-foreground border-primary hover:bg-primary/90" :
                     "bg-white border border-border-light text-text-secondary hover:bg-gray-100"}
