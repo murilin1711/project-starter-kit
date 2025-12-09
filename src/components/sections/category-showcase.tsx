@@ -16,7 +16,7 @@ const CategoryShowcase = () => {
               role="img" />
 
             <div className="absolute bottom-6 left-6">
-              <h2 className="text-black">Empresarial</h2>
+              <h2 className="text-black !whitespace-pre-line">Empresarial</h2>
             </div>
           </div>
         </Link>
