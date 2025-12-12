@@ -20,88 +20,76 @@ type Product = {
 const products: Product[] = [
   {
     id: 0,
-    name: "Colégio Militar",
-    price: "",
-    image1: "https://images.unsplash.com/photo-1521572267360-ee0c2909d518?auto=format&fit=crop&w=1200&q=80",
-    image2: "https://images.unsplash.com/photo-1521572267360-ee0c2909d518?auto=format&fit=crop&w=1200&q=80",
-    href: "/escolas/colegio-militar",
-    cta: "Comprar agora",
-    featured: true,
-    badge: "Novo",
-    accent: "#c9a04f"
-  },
-  {
-    id: 1,
     name: "Adonai",
     price: "",
     image1: "https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/render/image/public/document-uploads/goias_minas.pdf__1_-removebg-preview-1765246693154.png?width=8000&height=8000&resize=contain",
     image2: "https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/render/image/public/document-uploads/goias_minas.pdf__1_-removebg-preview-1765246693154.png?width=8000&height=8000&resize=contain"
   },
   {
-    id: 2,
+    id: 1,
     name: "Colégio Delta",
     price: "",
     image1: "https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/render/image/public/document-uploads/goias_minas.pdf__2_-removebg-preview-1765246749643.png?width=8000&height=8000&resize=contain",
     image2: "https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/render/image/public/document-uploads/goias_minas.pdf__2_-removebg-preview-1765246749643.png?width=8000&height=8000&resize=contain"
   },
   {
-    id: 3,
+    id: 2,
     name: "Escola Modelo",
     price: "",
     image1: "https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/render/image/public/document-uploads/goias_minas.pdf__3_-removebg-preview-1765246834589.png?width=8000&height=8000&resize=contain",
     image2: "https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/render/image/public/document-uploads/goias_minas.pdf__3_-removebg-preview-1765246834589.png?width=8000&height=8000&resize=contain"
   },
   {
-    id: 4,
+    id: 3,
     name: "Escola Educare",
     price: "",
     image1: "https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/render/image/public/document-uploads/1-removebg-preview-1765247533532.png?width=8000&height=8000&resize=contain",
     image2: "https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/render/image/public/document-uploads/1-removebg-preview-1765247533532.png?width=8000&height=8000&resize=contain"
   },
   {
-    id: 5,
+    id: 4,
     name: "Escola Educar",
     price: "",
     image1: "https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/render/image/public/document-uploads/2-removebg-preview-1765247533630.png?width=8000&height=8000&resize=contain",
     image2: "https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/render/image/public/document-uploads/2-removebg-preview-1765247533630.png?width=8000&height=8000&resize=contain"
   },
   {
-    id: 6,
+    id: 5,
     name: "Escola Pinguinho de Gente",
     price: "",
     image1: "https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/render/image/public/document-uploads/3-removebg-preview-1765247533847.png?width=8000&height=8000&resize=contain",
     image2: "https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/render/image/public/document-uploads/3-removebg-preview-1765247533847.png?width=8000&height=8000&resize=contain"
   },
   {
-    id: 7,
+    id: 6,
     name: "Educandário Dom Pedro II",
     price: "",
     image1: "https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/render/image/public/document-uploads/4-removebg-preview-1765247533750.png?width=8000&height=8000&resize=contain",
     image2: "https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/render/image/public/document-uploads/4-removebg-preview-1765247533750.png?width=8000&height=8000&resize=contain"
   },
   {
-    id: 8,
+    id: 7,
     name: "Villa Galileu",
     price: "",
     image1: "https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/render/image/public/document-uploads/2-removebg-preview-1-1765249932421.png?width=8000&height=8000&resize=contain",
     image2: "https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/render/image/public/document-uploads/2-removebg-preview-1-1765249932421.png?width=8000&height=8000&resize=contain"
   },
   {
-    id: 9,
+    id: 8,
     name: "DOM",
     price: "",
     image1: "https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/render/image/public/document-uploads/1-removebg-preview-1-1765249932384.png?width=8000&height=8000&resize=contain",
     image2: "https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/render/image/public/document-uploads/1-removebg-preview-1-1765249932384.png?width=8000&height=8000&resize=contain"
   },
   {
-    id: 10,
+    id: 9,
     name: "Colégio Galileu",
     price: "",
     image1: "https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/render/image/public/document-uploads/3-removebg-preview-1-1765249932104.png?width=8000&height=8000&resize=contain",
     image2: "https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/render/image/public/document-uploads/3-removebg-preview-1-1765249932104.png?width=8000&height=8000&resize=contain"
   },
   {
-    id: 11,
+    id: 10,
     name: "Colégio São Francisco de Assis",
     price: "",
     image1: "https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/render/image/public/document-uploads/4-removebg-preview-1-1765249932417.png?width=8000&height=8000&resize=contain",
@@ -246,35 +234,14 @@ const ProductCarousel = () => {
           </div>
         </div>
 
-        {/* Carrossel de produtos */}
-        <div className="relative mb-10 md:mb-14">
-          <div className="overflow-x-auto scrollbar-hide">
-            <div className="flex gap-6 md:gap-8 pb-4 px-4">
-              {products.map((product) => (
-                <ProductCard key={product.id} product={product} />
-              ))}
-            </div>
-          </div>
-          
-          {/* Indicador visual de scroll */}
-          <div className="flex justify-center mt-6">
-            <div className="flex items-center gap-1 text-gray-400 text-sm">
-            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-</svg>
-              <span>Arraste para ver mais</span>
-            </div>
-          </div>
-        </div>
-
         {/* Estatísticas animadas */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8 mb-10 md:mb-14">
           <div className="bg-white rounded-2xl p-6 md:p-8 text-center shadow-sm border border-gray-100 hover:shadow-md transition-shadow duration-300">
             <div className="mb-3">
               <div className="w-12 h-12 bg-blue-50 rounded-xl flex items-center justify-center mx-auto mb-3">
                 <span className="text-2xl text-[#2e3091]">🏫</span>
               </div>
-              <AnimatedCounter end={40} prefix="+ " suffix=" anos" />
+              <AnimatedCounter end={40} suffix=" anos" />
             </div>
             <p className="text-gray-600 text-sm md:text-base font-medium">
               de experiência no mercado
@@ -286,7 +253,7 @@ const ProductCarousel = () => {
               <div className="w-12 h-12 bg-green-50 rounded-xl flex items-center justify-center mx-auto mb-3">
                 <span className="text-2xl text-[#2e3091]">👨‍👩‍👧‍👦</span>
               </div>
-              <AnimatedCounter end={10000} prefix="+ " suffix=" clientes" />
+              <AnimatedCounter end={10000} suffix=" clientes" />
             </div>
             <p className="text-gray-600 text-sm md:text-base font-medium">
               atendidos com excelência
@@ -298,11 +265,31 @@ const ProductCarousel = () => {
               <div className="w-12 h-12 bg-purple-50 rounded-xl flex items-center justify-center mx-auto mb-3">
                 <span className="text-2xl text-[#2e3091]">🤝</span>
               </div>
-              <AnimatedCounter end={11} prefix="+ " suffix=" escolas" />
+              <AnimatedCounter end={11} suffix=" escolas" />
             </div>
             <p className="text-gray-600 text-sm md:text-base font-medium">
               parceiras satisfeitas
             </p>
+          </div>
+        </div>
+
+        {/* Carrossel de produtos */}
+        <div className="relative">
+          <div className="overflow-x-auto scrollbar-hide">
+            <div className="flex gap-6 md:gap-8 pb-4 px-4">
+              {products.map((product) => (
+                <ProductCard key={product.id} product={product} />
+              ))}
+            </div>
+          </div>
+
+          <div className="flex justify-center mt-6">
+            <div className="flex items-center gap-1 text-gray-400 text-sm">
+              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+              </svg>
+              <span>Arraste para ver mais</span>
+            </div>
           </div>
         </div>
       </div>
