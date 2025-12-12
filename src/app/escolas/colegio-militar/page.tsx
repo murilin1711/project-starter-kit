@@ -20,7 +20,7 @@ type Product = {
 const initialProducts: Product[] = [
   {
     id: 1,
-    name: "Camisa Polo Oficial",
+    name: "Camisa",
     price: 89.90,
     originalPrice: 109.90,
     image: "https://images.unsplash.com/photo-1596755094514-f87e34085b2c?auto=format&fit=crop&w=800",
@@ -30,7 +30,7 @@ const initialProducts: Product[] = [
   },
   {
     id: 2,
-    name: "Calça Social",
+    name: "Calça",
     price: 129.90,
     originalPrice: 149.90,
     image: "https://images.unsplash.com/photo-1624378439575-d8705ad7ae80?auto=format&fit=crop&w=800",
@@ -40,7 +40,7 @@ const initialProducts: Product[] = [
   },
   {
     id: 3,
-    name: "Jaqueta Colegial",
+    name: "Moletom",
     price: 159.90,
     image: "https://images.unsplash.com/photo-1551028719-00167b16eac5?auto=format&fit=crop&w=800",
     category: "Jaquetas",
@@ -69,7 +69,7 @@ const initialProducts: Product[] = [
   },
   {
     id: 6,
-    name: "Camisa Social",
+    name: "Boina",
     price: 119.90,
     originalPrice: 139.90,
     image: "https://images.unsplash.com/photo-1598033129183-c4f50c736f10?auto=format&fit=crop&w=800",
