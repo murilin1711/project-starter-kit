@@ -140,7 +140,7 @@ export default function LojaEstiloOsklen() {
             </button>
 
             <div className="flex flex-col">
-              <span className="uppercase text-xs tracking-widest text-neutral-600">
+              <span className="uppercase text-xs tracking-widest font-medium text-[#2e3091] mb-3 md:mb-4">
                 loja
               </span>
               <div className="text-2xl font-medium text-[#2e3091] mb-3 md:mb-4">
