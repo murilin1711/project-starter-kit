@@ -143,7 +143,7 @@ export default function LojaEstiloOsklen() {
               <span className="uppercase text-xs tracking-widest text-neutral-600">
                 loja
               </span>
-              <div className="text-2xl font-light leading-none {primaryText}">
+              <div className="text-2xl font-medium text-[#2e3091] mb-3 md:mb-4">
                 <span className="capitalize">colégio militar</span>
               </div>
             </div>
