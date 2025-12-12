@@ -23,8 +23,8 @@ const products: Product[] = [
     id: 0,
     name: "Colégio Militar",
     price: "",
-    image1: "https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/render/image/public/document-uploads/cepmg_page-0001-removebg-preview-1765254630699.png",
-    image2: "https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/render/image/public/document-uploads/cepmg_page-0001-removebg-preview-1765254630699.png",
+    image1: "https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/render/image/public/document-uploads/cepmg_page-0001-removebg-preview-1765503167632.png?width=8000&height=8000&resize=contain",
+    image2: "https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/render/image/public/document-uploads/cepmg_page-0001-removebg-preview-1765503167632.png?width=8000&height=8000&resize=contain",
     href: "/escolas/colegio-militar",
     cta: "Comprar agora",
     featured: true,
@@ -185,7 +185,8 @@ const ProductCard = ({ product }: { product: Product }) => {
                 height={isFeatured ? 500 : 450}
                 className="object-contain w-full h-full transition-transform duration-700 group-hover:scale-105"
                 style={{ 
-                  filter: isFeatured ? 'none' : 'brightness(1.1) opacity(0.8)'
+                  filter: isFeatured ? 'none' : 'brightness(1.1) opacity(0.8)',
+                  objectPosition: 'center'
                 }}
               />
             </div>
