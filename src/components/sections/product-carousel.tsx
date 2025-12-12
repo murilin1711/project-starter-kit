@@ -10,9 +10,26 @@ type Product = {
   price: string;
   image1: string;
   image2: string;
+  href?: string;
+  cta?: string;
+  featured?: boolean;
+  badge?: string;
+  accent?: string;
 };
 
 const products: Product[] = [
+  {
+    id: 0,
+    name: "Colégio Militar",
+    price: "",
+    image1: "https://images.unsplash.com/photo-1521572267360-ee0c2909d518?auto=format&fit=crop&w=1200&q=80",
+    image2: "https://images.unsplash.com/photo-1521572267360-ee0c2909d518?auto=format&fit=crop&w=1200&q=80",
+    href: "/escolas/colegio-militar",
+    cta: "Comprar agora",
+    featured: true,
+    badge: "Novo",
+    accent: "#c9a04f"
+  },
   {
     id: 1,
     name: "Adonai",
@@ -144,36 +161,64 @@ const AnimatedCounter = ({ end, duration = 2000, suffix = "", prefix = "" }) => 
   );
 };
 
-const ProductCard = ({ product }: { product: Product }) => (
-  <div className="flex-shrink-0 w-[280px] md:w-[300px] lg:w-[320px]">
-    <a href="#" className="block group">
-      <div className="relative overflow-hidden rounded-2xl aspect-[3/4] bg-gradient-to-b from-gray-50 to-gray-100 flex items-center justify-center border border-gray-200 transition-all duration-300 group-hover:border-[#2e3091] group-hover:shadow-lg">
-        <Image
-          src={product.image1}
-          alt={product.name}
-          width={320}
-          height={427}
-          className="w-full h-full object-contain p-6 opacity-30 transition-all duration-300 group-hover:opacity-70 group-hover:scale-105"
-        />
-        
-        {/* Botão Em Breve */}
-        <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-10">
-          <button className="bg-[#2e3091] text-white px-8 py-3 rounded-lg text-sm font-medium transition-all duration-300 group-hover:scale-105 group-hover:shadow-lg hover:bg-[#252a7a]">
-            Em breve
-          </button>
+const ProductCard = ({ product }: { product: Product }) => {
+  const isFeatured = product.featured;
+  const accent = product.accent || "#2e3091";
+  const actionContainer = isFeatured ? "space-y-3" : "flex justify-center";
+
+  return (
+    <div className={`flex-shrink-0 ${isFeatured ? "w-[320px] md:w-[350px] lg:w-[380px]" : "w-[280px] md:w-[300px] lg:w-[320px]"}`}>
+      <a href={product.href || "#"} className="block group h-full">
+        <div className={`relative overflow-hidden rounded-2xl aspect-[3/4] flex items-center justify-center transition-all duration-500 ${isFeatured ? "bg-gradient-to-br from-[#0b1d2b] via-[#142f48] to-[#0b1d2b] border border-[#c9a04f] shadow-[0_25px_80px_-30px_rgba(11,29,43,0.9)]" : "bg-gradient-to-b from-gray-50 to-gray-100 border border-gray-200 group-hover:border-[#2e3091] group-hover:shadow-lg"}`}>
+          {product.badge && (
+            <span className="absolute top-4 left-4 z-20 bg-white/90 text-[#0b1d2b] px-3 py-1 rounded-full text-xs font-semibold tracking-tight shadow-md">
+              {product.badge}
+            </span>
+          )}
+
+          <div className="absolute inset-0">
+            <Image
+              src={product.image1}
+              alt={product.name}
+              width={420}
+              height={560}
+              className={`${isFeatured ? "w-full h-full object-cover opacity-80 group-hover:opacity-100 scale-105 transition-all duration-700" : "w-full h-full object-contain p-6 opacity-30 transition-all duration-300 group-hover:opacity-70 group-hover:scale-105"}`}
+            />
+          </div>
+
+          <div className={`absolute inset-0 transition-all duration-500 ${isFeatured ? "bg-gradient-to-t from-black/45 via-black/25 to-transparent group-hover:from-black/35" : "bg-gradient-to-t from-black/0 via-transparent to-transparent group-hover:from-black/5"}`}></div>
+
+          <div className={`absolute bottom-6 left-5 right-5 z-20 ${actionContainer}`}>
+            {isFeatured && (
+              <div className="flex items-center justify-between text-white">
+                <h3 className="text-xl md:text-2xl font-semibold tracking-tight">
+                  {product.name}
+                </h3>
+                <span className="px-3 py-1 rounded-full text-[11px] font-semibold" style={{ backgroundColor: "rgba(201,160,79,0.18)", color: accent }}>
+                  Destaque
+                </span>
+              </div>
+            )}
+
+            <button
+              className={`${product.cta ? "w-full bg-[#c9a04f] text-[#0b1d2b] font-semibold shadow-[0_14px_40px_-18px_rgba(201,160,79,0.95)] hover:shadow-[0_18px_55px_-18px_rgba(201,160,79,0.9)] hover:-translate-y-0.5" : "bg-[#2e3091] text-white hover:bg-[#252a7a]"} px-8 py-3 rounded-lg text-sm transition-all duration-300 group-hover:scale-[1.02]`}
+            >
+              {product.cta ? product.cta : "Em breve"}
+            </button>
+          </div>
         </div>
-        
-        {/* Overlay sutil no hover */}
-        <div className="absolute inset-0 bg-gradient-to-t from-black/0 via-transparent to-transparent transition-all duration-300 group-hover:from-black/5"></div>
-      </div>
-      <div className="mt-4">
-        <h3 className="text-base lg:text-lg font-medium text-gray-900 leading-tight text-center group-hover:text-[#2e3091] transition-colors duration-300">
-          {product.name}
-        </h3>
-      </div>
-    </a>
-  </div>
-);
+
+        {!isFeatured && (
+          <div className="mt-4">
+            <h3 className="text-base lg:text-lg font-medium text-gray-900 leading-tight text-center group-hover:text-[#2e3091] transition-colors duration-300">
+              {product.name}
+            </h3>
+          </div>
+        )}
+      </a>
+    </div>
+  );
+};
 
 const ProductCarousel = () => {
   return (
