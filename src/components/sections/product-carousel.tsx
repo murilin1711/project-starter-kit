@@ -4,6 +4,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import Image from 'next/image';
 import { useInView } from 'framer-motion';
 import { CheckCircle } from 'lucide-react';
+import { useRouter } from 'next/navigation';
 
 type Product = {
   id: number;
@@ -164,10 +165,28 @@ const AnimatedCounter = ({ end, duration = 2000, suffix = "", prefix = "" }) => 
 
 const ProductCard = ({ product }: { product: Product }) => {
   const isFeatured = product.featured;
+  const router = useRouter();
+
+  const goToProduct = () => {
+    if (product.href) {
+      router.push(product.href);
+    }
+  };
 
   return (
-    <div className={`flex-shrink-0 ${isFeatured ? "w-[300px] md:w-[320px] lg:w-[340px]" : "w-[280px] md:w-[300px] lg:w-[320px]"}`}>
-      <a href={product.href || "#"} className="block group h-full">
+    <div
+      className={`flex-shrink-0 ${isFeatured ? "w-[300px] md:w-[320px] lg:w-[340px]" : "w-[280px] md:w-[300px] lg:w-[320px]"}`}
+      role={product.href ? "button" : undefined}
+      tabIndex={product.href ? 0 : -1}
+      onClick={product.href ? goToProduct : undefined}
+      onKeyDown={(e) => {
+        if (product.href && (e.key === "Enter" || e.key === " ")) {
+          e.preventDefault();
+          goToProduct();
+        }
+      }}
+    >
+      <div className="block group h-full cursor-pointer">
         <div className={`relative overflow-hidden rounded-2xl aspect-[3/4] flex items-center justify-center transition-all duration-500 ${isFeatured ? "bg-gradient-to-b from-white to-gray-50 border-2 border-[#2e3091] shadow-lg shadow-[#2e3091]/10" : "bg-gradient-to-b from-gray-50 to-gray-100 border border-gray-200"} group-hover:border-[#2e3091] group-hover:shadow-lg`}>
           {product.badge && (
             <span className="absolute top-4 left-4 z-20 bg-[#2e3091] text-white px-3 py-1.5 rounded-full text-xs font-semibold tracking-tight shadow-md flex items-center gap-1">
@@ -202,6 +221,11 @@ const ProductCard = ({ product }: { product: Product }) => {
             )}
             
             <button
+              type="button"
+              onClick={(e) => {
+                e.stopPropagation();
+                goToProduct();
+              }}
               className={`w-full ${product.cta ? "bg-[#2e3091] hover:bg-[#252a7a] text-white" : "bg-gray-200 hover:bg-gray-300 text-gray-700"} px-6 py-3 rounded-lg text-sm font-medium transition-all duration-300 group-hover:scale-[1.02] shadow-md group-hover:shadow-lg`}
             >
               {product.cta ? product.cta : "Em breve"}
@@ -216,7 +240,7 @@ const ProductCard = ({ product }: { product: Product }) => {
             </h3>
           </div>
         )}
-      </a>
+      </div>
     </div>
   );
 };
