@@ -148,6 +148,7 @@ export default function LojaEstiloOsklen() {
               </div>
             </div>
           </div>
+          
       {/* ===== Top controls: categorias (pills) e ordenação com ícone ↓ ===== */}
       <div className="max-w-7xl mx-auto px-6 py-6">
         <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
