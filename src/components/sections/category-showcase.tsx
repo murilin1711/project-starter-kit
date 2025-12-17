@@ -101,7 +101,11 @@ const CategoryShowcase = () => {
 
         {/* Texto de destaque abaixo */}
         <div className="text-center mt-10 md:mt-14 max-w-2xl mx-auto">
-          <div className="bg-gradient-to-r from-blue-50 to-purple-50 rounded-2xl p-6 md:p-8 border border-gray-100">
+          <div className="p-8 md:p-12 lg:p-16 flex flex-col justify-between 
+                bg-gradient-to-br from-gray-50 to-gray-100 
+                rounded-2xl 
+                shadow-[0_10px_30px_rgba(0,0,0,0.08)]">
+
             <p className="text-gray-700 text-base md:text-lg mb-4 !whitespace-pre-line">Independente do seu segmento, temos a solução ideal para uniformes.
 
             </p>
