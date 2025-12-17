@@ -10,6 +10,8 @@ const Header = () => {
   const [searchOpen, setSearchOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [mobileSubmenuOpen, setMobileSubmenuOpen] = useState<string | null>(null);
+
   const navItems = ["Escolas", "Empresas", "Personalizadas", "Sobre", "FAQ"];
 
   useEffect(() => {
@@ -24,6 +26,7 @@ const Header = () => {
 
   return (
     <>
+      {/* White background header */}
       <div className={`fixed top-0 left-0 right-0 bg-white z-40 transition-opacity duration-300 !w-full !h-[79px] ${isScrolled ? 'opacity-0' : 'opacity-100'}`} />
 
       <header className="fixed w-full z-50">
@@ -182,6 +185,34 @@ const Header = () => {
                         >
                           {item}
                         </Link>
+                      ) : item === "Escolas" ? (
+                        <>
+                          <button
+                            onClick={() =>
+                              setMobileSubmenuOpen(
+                                mobileSubmenuOpen === "Escolas" ? null : "Escolas"
+                              )
+                            }
+                            className="block w-full text-left font-suisse text-[16px] font-medium text-black py-3 px-4 rounded-lg hover:bg-white/80 transition-colors duration-300 flex justify-between items-center"
+                          >
+                            {item}
+                            <span className="ml-2">{mobileSubmenuOpen === "Escolas" ? "▲" : "▼"}</span>
+                          </button>
+
+                          {mobileSubmenuOpen === "Escolas" && (
+                            <ul className="pl-6 mt-2 space-y-2">
+                              <li>
+                                <Link
+                                  href="/escolas/colegio-militar"
+                                  onClick={() => setMobileMenuOpen(false)}
+                                  className="block text-[#2e3091] font-bold text-[15px] hover:underline"
+                                >
+                                  Colégio Militar
+                                </Link>
+                              </li>
+                            </ul>
+                          )}
+                        </>
                       ) : (
                         <button
                           onClick={() => setMobileMenuOpen(false)}
@@ -198,7 +229,7 @@ const Header = () => {
           </div>
         )}
 
-        {/* Submenu Overlay */}
+        {/* Submenu Overlay Desktop */}
         <div
           id="submenu"
           data-menu-open={activeSubmenu !== null && activeSubmenu !== "Sobre"} // Sobre não abre submenu
