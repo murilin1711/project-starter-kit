@@ -31,86 +31,19 @@ const products: Product[] = [
     badge: "Disponível",
     accent: "#2e3091"
   },
-  {
-    id: 1,
-    name: "Adonai",
-    price: "",
-    image1: "https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/render/image/public/document-uploads/goias_minas.pdf__1_-removebg-preview-1765246693154.png?width=8000&height=8000&resize=contain",
-    image2: "https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/render/image/public/document-uploads/goias_minas.pdf__1_-removebg-preview-1765246693154.png?width=8000&height=8000&resize=contain"
-  },
-  {
-    id: 2,
-    name: "Colégio Delta",
-    price: "",
-    image1: "https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/render/image/public/document-uploads/goias_minas.pdf__2_-removebg-preview-1765246749643.png?width=8000&height=8000&resize=contain",
-    image2: "https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/render/image/public/document-uploads/goias_minas.pdf__2_-removebg-preview-1765246749643.png?width=8000&height=8000&resize=contain"
-  },
-  {
-    id: 3,
-    name: "Escola Modelo",
-    price: "",
-    image1: "https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/render/image/public/document-uploads/goias_minas.pdf__3_-removebg-preview-1765246834589.png?width=8000&height=8000&resize=contain",
-    image2: "https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/render/image/public/document-uploads/goias_minas.pdf__3_-removebg-preview-1765246834589.png?width=8000&height=8000&resize=contain"
-  },
-  {
-    id: 4,
-    name: "Escola Educare",
-    price: "",
-    image1: "https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/render/image/public/document-uploads/1-removebg-preview-1765247533532.png?width=8000&height=8000&resize=contain",
-    image2: "https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/render/image/public/document-uploads/1-removebg-preview-1765247533532.png?width=8000&height=8000&resize=contain"
-  },
-  {
-    id: 5,
-    name: "Escola Educar",
-    price: "",
-    image1: "https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/render/image/public/document-uploads/2-removebg-preview-1765247533630.png?width=8000&height=8000&resize=contain",
-    image2: "https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/render/image/public/document-uploads/2-removebg-preview-1765247533630.png?width=8000&height=8000&resize=contain"
-  },
-  {
-    id: 6,
-    name: "Escola Pinguinho de Gente",
-    price: "",
-    image1: "https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/render/image/public/document-uploads/3-removebg-preview-1765247533847.png?width=8000&height=8000&resize=contain",
-    image2: "https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/render/image/public/document-uploads/3-removebg-preview-1765247533847.png?width=8000&height=8000&resize=contain"
-  },
-  {
-    id: 7,
-    name: "Educandário Dom Pedro II",
-    price: "",
-    image1: "https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/render/image/public/document-uploads/4-removebg-preview-1765247533750.png?width=8000&height=8000&resize=contain",
-    image2: "https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/render/image/public/document-uploads/4-removebg-preview-1765247533750.png?width=8000&height=8000&resize=contain"
-  },
-  {
-    id: 8,
-    name: "Villa Galileu",
-    price: "",
-    image1: "https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/render/image/public/document-uploads/2-removebg-preview-1-1765249932421.png?width=8000&height=8000&resize=contain",
-    image2: "https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/render/image/public/document-uploads/2-removebg-preview-1-1765249932421.png?width=8000&height=8000&resize=contain"
-  },
-  {
-    id: 9,
-    name: "DOM",
-    price: "",
-    image1: "https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/render/image/public/document-uploads/1-removebg-preview-1-1765249932384.png?width=8000&height=8000&resize=contain",
-    image2: "https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/render/image/public/document-uploads/1-removebg-preview-1-1765249932384.png?width=8000&height=8000&resize=contain"
-  },
-  {
-    id: 10,
-    name: "Colégio Galileu",
-    price: "",
-    image1: "https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/render/image/public/document-uploads/3-removebg-preview-1-1765249932104.png?width=8000&height=8000&resize=contain",
-    image2: "https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/render/image/public/document-uploads/3-removebg-preview-1-1765249932104.png?width=8000&height=8000&resize=contain"
-  },
-  {
-    id: 11,
-    name: "Colégio São Francisco de Assis",
-    price: "",
-    image1: "https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/render/image/public/document-uploads/4-removebg-preview-1-1765249932417.png?width=8000&height=8000&resize=contain",
-    image2: "https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/render/image/public/document-uploads/4-removebg-preview-1-1765249932417.png?width=8000&height=8000&resize=contain"
-  }
+  { id: 1, name: "Adonai", price: "", image1: "https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/render/image/public/document-uploads/goias_minas.pdf__1_-removebg-preview-1765246693154.png?width=8000&height=8000&resize=contain", image2: "https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/render/image/public/document-uploads/goias_minas.pdf__1_-removebg-preview-1765246693154.png?width=8000&height=8000&resize=contain" },
+  { id: 2, name: "Colégio Delta", price: "", image1: "https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/render/image/public/document-uploads/goias_minas.pdf__2_-removebg-preview-1765246749643.png?width=8000&height=8000&resize=contain", image2: "https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/render/image/public/document-uploads/goias_minas.pdf__2_-removebg-preview-1765246749643.png?width=8000&height=8000&resize=contain" },
+  { id: 3, name: "Escola Modelo", price: "", image1: "https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/render/image/public/document-uploads/goias_minas.pdf__3_-removebg-preview-1765246834589.png?width=8000&height=8000&resize=contain", image2: "https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/render/image/public/document-uploads/goias_minas.pdf__3_-removebg-preview-1765246834589.png?width=8000&height=8000&resize=contain" },
+  { id: 4, name: "Escola Educare", price: "", image1: "https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/render/image/public/document-uploads/1-removebg-preview-1765247533532.png?width=8000&height=8000&resize=contain", image2: "https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/render/image/public/document-uploads/1-removebg-preview-1765247533532.png?width=8000&height=8000&resize=contain" },
+  { id: 5, name: "Escola Educar", price: "", image1: "https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/render/image/public/document-uploads/2-removebg-preview-1765247533630.png?width=8000&height=8000&resize=contain", image2: "https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/render/image/public/document-uploads/2-removebg-preview-1765247533630.png?width=8000&height=8000&resize=contain" },
+  { id: 6, name: "Escola Pinguinho de Gente", price: "", image1: "https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/render/image/public/document-uploads/3-removebg-preview-1765247533847.png?width=8000&height=8000&resize=contain", image2: "https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/render/image/public/document-uploads/3-removebg-preview-1765247533847.png?width=8000&height=8000&resize=contain" },
+  { id: 7, name: "Educandário Dom Pedro II", price: "", image1: "https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/render/image/public/document-uploads/4-removebg-preview-1765247533750.png?width=8000&height=8000&resize=contain", image2: "https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/render/image/public/document-uploads/4-removebg-preview-1765247533750.png?width=8000&height=8000&resize=contain" },
+  { id: 8, name: "Villa Galileu", price: "", image1: "https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/render/image/public/document-uploads/2-removebg-preview-1-1765249932421.png?width=8000&height=8000&resize=contain", image2: "https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/render/image/public/document-uploads/2-removebg-preview-1-1765249932421.png?width=8000&height=8000&resize=contain" },
+  { id: 9, name: "DOM", price: "", image1: "https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/render/image/public/document-uploads/1-removebg-preview-1-1765249932384.png?width=8000&height=8000&resize=contain", image2: "https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/render/image/public/document-uploads/1-removebg-preview-1-1765249932384.png?width=8000&height=8000&resize=contain" },
+  { id: 10, name: "Colégio Galileu", price: "", image1: "https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/render/image/public/document-uploads/3-removebg-preview-1-1765249932104.png?width=8000&height=8000&resize=contain", image2: "https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/render/image/public/document-uploads/3-removebg-preview-1-1765249932104.png?width=8000&height=8000&resize=contain" },
+  { id: 11, name: "Colégio São Francisco de Assis", price: "", image1: "https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/render/image/public/document-uploads/4-removebg-preview-1-1765249932417.png?width=8000&height=8000&resize=contain", image2: "https://slelguoygbfzlpylpxfs.supabase.co/storage/v1/render/image/public/document-uploads/4-removebg-preview-1-1765249932417.png?width=8000&height=8000&resize=contain" }
 ];
 
-// ---------- CARD ----------
 const ProductCard = ({ product }: { product: Product }) => {
   const isFeatured = product.featured;
   const router = useRouter();
@@ -121,24 +54,20 @@ const ProductCard = ({ product }: { product: Product }) => {
 
   return (
     <div
-      className={`flex-shrink-0 ${
-        isFeatured
-          ? "w-[300px] md:w-[320px] lg:w-[340px]"
-          : "w-[280px] md:w-[300px] lg:w-[320px]"
+      className={`flex-shrink-0 cursor-pointer ${
+        isFeatured ? "w-[300px] md:w-[320px] lg:w-[340px]" : "w-[280px] md:w-[300px] lg:w-[320px]"
       }`}
       role={product.href ? "button" : undefined}
       tabIndex={product.href ? 0 : -1}
       onClick={product.href ? goToProduct : undefined}
     >
-      <div className="block group h-full cursor-pointer">
+      <div className="block group h-full">
         <div
-          className={`relative overflow-hidden rounded-2xl aspect-[3/4] flex items-center justify-center transition-all duration-500
-          ${
+          className={`relative overflow-hidden rounded-2xl aspect-[3/4] flex items-center justify-center transition-all duration-500 ${
             isFeatured
               ? "bg-gradient-to-b from-white to-gray-50 border-2 border-transparent shadow-lg shadow-[#2e3091]/10"
               : "bg-gradient-to-b from-gray-50 to-gray-100 border border-gray-200"
-          }
-          group-hover:shadow-lg`}
+          } group-hover:shadow-lg`}
         >
           {product.badge && (
             <span className="absolute top-4 left-4 z-20 bg-[#2e3091] text-white px-3 py-1.5 rounded-full text-xs font-semibold shadow-md flex items-center gap-1">
@@ -172,7 +101,7 @@ const ProductCard = ({ product }: { product: Product }) => {
                 e.stopPropagation();
                 goToProduct();
               }}
-              className={`w-full ${
+              className={`cursor-pointer w-full ${
                 product.cta
                   ? "bg-[#2e3091] hover:bg-[#252a7a] text-white"
                   : "bg-gray-200 hover:bg-gray-300 text-gray-700"
@@ -195,7 +124,6 @@ const ProductCard = ({ product }: { product: Product }) => {
   );
 };
 
-// ---------- CARROSSEL ----------
 const ProductCarousel = () => {
   return (
     <section className="py-14 bg-gradient-to-b from-white to-gray-50">
