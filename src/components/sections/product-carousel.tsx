@@ -1,9 +1,8 @@
 "use client";
 
-import React, { useState, useEffect, useRef } from 'react';
-import Image from 'next/image';
+import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import { CheckCircle } from 'lucide-react';
-import { useRouter } from 'next/navigation';
 
 type Product = {
   id: number;
@@ -113,10 +112,10 @@ const products: Product[] = [
 // ---------- CARD ----------
 const ProductCard = ({ product }: { product: Product }) => {
   const isFeatured = product.featured;
-  const router = useRouter();
+  const navigate = useNavigate();
 
   const goToProduct = () => {
-    if (product.href) router.push(product.href);
+    if (product.href) navigate(product.href);
   };
 
   return (
@@ -148,11 +147,9 @@ const ProductCard = ({ product }: { product: Product }) => {
           )}
 
           <div className="absolute inset-0 flex items-center justify-center p-6">
-            <Image
+            <img
               src={product.image1}
               alt={product.name}
-              width={400}
-              height={500}
               className="object-contain w-full h-full transition-transform duration-700 group-hover:scale-105"
             />
           </div>

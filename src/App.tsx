@@ -1,3 +1,5 @@
+import { Routes, Route } from 'react-router-dom';
+import Header from '@/components/sections/header';
 import AccessibilityWidget from '@/components/sections/accessibility-widget';
 import HeroBanner from '@/components/sections/hero-banner';
 import CategoryShowcase from '@/components/sections/category-showcase';
@@ -8,7 +10,7 @@ import FibrasNobresBanner from '@/components/sections/fibras-nobres-banner';
 import Footer from '@/components/sections/footer';
 import CookieBanner from '@/components/sections/cookie-banner';
 
-function App() {
+function HomePage() {
   return (
     <main className="relative min-h-screen bg-white antialiased">
       <AccessibilityWidget />
@@ -33,6 +35,19 @@ function App() {
       </div>
       <CookieBanner />
     </main>
+  );
+}
+
+function App() {
+  return (
+    <>
+      <Header />
+      <div className="pt-24">
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+        </Routes>
+      </div>
+    </>
   );
 }
 
