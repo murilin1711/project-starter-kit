@@ -14,7 +14,6 @@ export default function CookieBanner() {
     setIsMounted(true);
     const hasDismissed = localStorage.getItem(COOKIE_CONSENT_KEY);
     if (!hasDismissed) {
-      // Delay to allow slide-up animation
       const timer = setTimeout(() => {
         setIsDismissed(false);
       }, 300);
@@ -49,7 +48,7 @@ export default function CookieBanner() {
             </h3>
             <p className="mt-2 text-[13px] text-text-tertiary tracking-[-0.02em] leading-snug max-w-lg">
               Utilizamos cookies para melhorar a sua experiência no site. Ao continuar navegando, você concorda com a nossa{" "}
-              <Link href="/politica-de-privacidade" className="underline hover:text-text-primary transition-colors">
+              <Link href="/politica-de-privacidade" className="cursor-pointer underline hover:text-text-primary transition-colors">
                 Política de Privacidade
               </Link>
               .
@@ -59,14 +58,14 @@ export default function CookieBanner() {
           <div className="flex items-center gap-4 sm:gap-6 shrink-0">
             <button
               onClick={handleDismiss}
-              className="text-[14px] underline whitespace-nowrap text-text-secondary hover:text-text-primary tracking-[-0.02em] transition-colors"
+              className="cursor-pointer text-[14px] underline whitespace-nowrap text-text-secondary hover:text-text-primary tracking-[-0.02em] transition-colors"
             >
               Continuar sem aceitar
             </button>
             <button
               onClick={handleDismiss}
               aria-label="Fechar aviso de cookies"
-              className="w-7 h-7 flex items-center justify-center rounded-full bg-input hover:bg-border transition-colors group"
+              className="cursor-pointer w-7 h-7 flex items-center justify-center rounded-full bg-input hover:bg-border transition-colors group"
             >
               <X size={16} className="text-text-muted group-hover:text-text-secondary transition-colors" />
             </button>

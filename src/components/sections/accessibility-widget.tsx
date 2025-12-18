@@ -25,8 +25,8 @@ const AccessibilityWidget = () => {
         />
 
       </div>
-    </div>);
-
+    </div>
+  );
 };
 
 export default AccessibilityWidget;
